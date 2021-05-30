@@ -1,0 +1,32 @@
+ <%= form_with scope: :category, method: :put, url: categories_update_path, local: true do |f| %>
+  <% if @category.errors.any? %>
+    <ul>
+    <% @category.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <div class="update_form" id="updateForm">
+      <div class="update_details">
+      <%= f.hidden_field :id, value:@category.id %>
+      <%= f.hidden_field :user_id, value:@category.user_id %>
+      </div>
+
+    <div class="update_details">
+      <%= f.label :"Category Name" , class:"textLabel" %>
+      <%= f.text_field :category_name, value:@category.category_name, class:"textUpdate" %>
+    </div>
+
+    <div class="update_details">
+      <%= f.label :"Category Details" , class:"textLabel" %>
+      <%= f.text_field :category_details, value:@category.category_details, class:"textUpdate" %>
+    </div>
+
+    <div>
+      <%= hidden_field_tag(:id, @category.id) %>
+      <%= f.submit :"UPDATE GAME", :class => "submit_update" %>
+    </div>
+    
+  </div>
+<% end %>

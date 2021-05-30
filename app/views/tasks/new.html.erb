@@ -1,0 +1,32 @@
+<%= form_with scope: :task, url: tasks_create_path, local: true do |f| %>
+  <% if @task.errors.any? %>
+    <ul>
+    <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <div class="create_details">
+    <%= f.label :"Task Name", class:"textLabel" %>
+    <%= f.text_field :task_name, class:"textField" %>
+  </div>
+    <div class="create_details">
+    <%= f.label :"Task Details", class:"textLabel" %>
+    <%= f.text_field :task_details, class:"textField" %>
+  </div>
+
+  <div class="create_details">
+    <%= f.label :"Due Date", class:"textLabel" %>
+    <%= f.date_field :due_date, class:"textField" %>
+  </div>
+  
+  <div>
+    <%= f.hidden_field :user_id, value: @id %>
+    <%= f.hidden_field :category_id, value: @category_id %>
+    <%= f.hidden_field :complete, value: 0 %>
+    <%= hidden_field_tag(:category_id, @category_id) %>
+  </div>
+  
+  <%= f.submit "SAVE GAME", :class => "submit" %>
+<% end %>

@@ -1,0 +1,43 @@
+ <%= form_with scope: :task, method: :put, url: tasks_update_path, local: true do |f| %>
+  <% if @task.errors.any? %>
+    <ul>
+    <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <div class="update_form" id="updateForm">
+      <div class="update_details">
+      <%= f.hidden_field :id, value:@task.id %>
+      <%= f.hidden_field :user_id, value:@task.user_id %>
+      </div>
+
+    <div class="update_details">
+      <%= f.label :"Task Name" , class:"textLabel" %>
+      <%= f.text_field :task_name, value:@task.task_name, class:"textUpdate" %>
+    </div>
+
+    <div class="update_details">
+      <%= f.label :"Task Details" , class:"textLabel" %>
+      <%= f.text_field :task_details, value:@task.task_details, class:"textUpdate" %>
+    </div>
+
+    <div class="update_details">
+      <%= f.label :"Due Date" , class:"textLabel" %>
+      <%= f.date_field :due_date, value:@task.due_date, class:"textUpdate" %>
+    </div>
+
+    <div>
+      <%= f.hidden_field :user_id, value: @task.user_id %>
+      <%= f.hidden_field :category_id, value: @task.category_id %>
+      <%= f.hidden_field :complete, value: @task.complete %>
+    </div>
+
+    <div>
+      <%= hidden_field_tag(:task_id, @task.id) %>
+      <%= f.submit :"UPDATE TASK", :class => "submit_update" %>
+    </div>
+    
+  </div>
+<% end %>

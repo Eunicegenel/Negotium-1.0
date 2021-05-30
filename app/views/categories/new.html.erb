@@ -1,0 +1,25 @@
+<%= form_with scope: :category, url: categories_create_path, local: true do |f| %>
+  <% if @category.errors.any? %>
+    <ul>
+    <% @category.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <div class="create_details">
+    <%= f.label :"Category Name", class:"textLabel" %>
+    <%= f.text_field :category_name, class:"textField" %>
+  </div>
+  
+  <div class="create_details">
+    <%= f.label :"Category Details", class:"textLabel" %>
+    <%= f.text_field :category_details, class:"textField" %>
+  </div>
+  
+  <div>
+    <%= f.hidden_field :user_id, value: @id %>
+  </div>
+  
+  <%= f.submit "SAVE GAME", :class => "submit" %>
+<% end %>
