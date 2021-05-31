@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.journal {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}

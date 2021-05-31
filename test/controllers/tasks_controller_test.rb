@@ -25,4 +25,9 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     delete tasks_delete_path
     assert_response :redirect
   end
+
+  test 'should finish task' do
+    put tasks_update_path
+    assert_response :redirect
+  end
 end

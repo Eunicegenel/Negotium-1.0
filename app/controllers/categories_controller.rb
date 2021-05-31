@@ -2,8 +2,12 @@ class CategoriesController < ApplicationController
   skip_before_action :authorized, only: [:new, :create, :welcome]
 
   def new
-    @category = Category.new
     @id = session[:user_id]
+    if @id == nil
+      redirect_to '/authorized'
+    else
+      @category = Category.new
+    end
   end
 
   def change

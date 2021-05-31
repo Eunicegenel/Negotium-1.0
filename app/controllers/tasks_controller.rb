@@ -51,6 +51,11 @@ class TasksController < ApplicationController
     redirect_to '/authorized'
   end
 
+  def finish
+    Task.find_by_id(params[:task_id]).update(complete:1)
+    redirect_to '/authorized'
+  end
+
   private 
 
   def task_params

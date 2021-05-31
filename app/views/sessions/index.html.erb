@@ -1,0 +1,59 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="index.scss"> 
+  <link rel="shortcut icon" type="image/png" href="logo.png"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Dosis:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="journal">
+    <div>
+      <h1>This is where your journal entries will be, <%= current_user.username %></h1>
+      <% if !!flash[:alert] %>
+        <p><%= flash[:alert] %></p> <br>
+      <% end %>
+      <%= button_to "Logout", '/logout', method: :get %>
+      <%= button_to "New Category", '/categories', method: :get %>
+
+      <%= link_to "All", authorized_path(:category_id => nil) %>
+
+      <% @category.each do |c| %>
+        <%= link_to authorized_path(:category_id => c.id) do %>
+          <div>
+            <h4><%= c.category_name %></h4>
+            <h5><%= c.category_details %></h5>
+          </div>
+        <% end %>
+        <%= button_to "New Task", tasks_new_path(:category_id => c.id) %>
+        <%= button_to 'Update Category', categories_change_path(:category_id => c.id), class:"btn_details" %>
+        <%= form_with scope: :category, method: :delete, url: categories_delete_path, local: true do |f| %>
+          <div class="delete_form" id="deleteForm">                                          
+            <%= hidden_field_tag(:id, c.id) %>
+            <%= f.submit :"Delete Category", :class => "submit_delete", :id => "erase" %>
+          </div>  
+        <% end %>
+      <% end %>
+    </div>
+
+    <div>
+      <% @task.each do |t| %>
+        <h4><%= t.task_name %></h4>
+        <h5><%= t.category_name %></h5>
+        <h5><%= t.due_date.to_date %> <%= t.due_date.strftime("%A") %></h5>
+        <h5><%= t.task_details %></h5>
+        <%= button_to "Update Task", tasks_change_path(:task_id => t.id) %>
+        <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
+          <div class="delete_form" id="deleteForm">                                          
+            <%= hidden_field_tag(:task_id, t.id) %>
+            <%= f.submit :"Delete Task", :class => "submit_delete", :id => "erase" %>
+          </div>  
+        <% end %>
+        <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
+          <div class="update_complete" id="updateComplete">                                          
+            <%= hidden_field_tag(:task_id, t.id) %>
+            <%= f.submit :"Finish Task", :class => "finish_task", :id => "finish" %>
+          </div>  
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</body>

@@ -15,10 +15,18 @@ class SessionsController < ApplicationController
     end
   end
 
-  def n_index
-    @cat = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
-    catids = @cat.pluck(:id)
-    @task = Task.where(user_id: session[:user_id],category_id: catids).sort_by {|obj| obj.updated_at}.reverse
+  def index
+    @category_id = params[:category_id] 
+    if @category_id == nil
+      @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
+      catids = @category.pluck(:id)
+      @task = Task.where(user_id: session[:user_id],category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
+    else
+      @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
+      @chosen_category = Category.where(id: @category_id).sort_by {|obj| obj.updated_at}.reverse
+      catids = @chosen_category.pluck(:id)
+      @task = Task.where(user_id: session[:user_id],category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
+    end
   end
 
   def login

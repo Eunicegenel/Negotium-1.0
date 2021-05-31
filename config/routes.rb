@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
-  get 'authorized', to: 'sessions#n_index'
+  get 'authorized', to: 'sessions#index'
   get 'logout', to: 'sessions#out'
 
   get '/users' => 'users#new', as: 'users_new'
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/tasks' => 'tasks#new', as: 'tasks_new'
   post '/tasks' => 'tasks#new'
   delete '/tasks' => 'tasks#delete', as: 'tasks_delete'
+  put '/tasks' => 'tasks#finish', as: 'tasks_finish'
 
   get '/tasks/new' => 'tasks#new'
   post '/tasks/new' => 'tasks#create', as: 'tasks_create'
