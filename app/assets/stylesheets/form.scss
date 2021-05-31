@@ -1,0 +1,49 @@
+.boldtxt {
+  font-family: "Bebas Neue";
+  font-weight: regular;
+}
+
+.generaltxt {
+  font-family: "Montserrat";
+}
+
+.bigtxt {
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+
+.medtxt {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+
+.smalltxt {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0.5rem;
+}
+
+.textField {
+  width: 20rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.textArea {
+  width: 20rem;
+  height: 20rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.form_layout {
+  display: grid;
+  grid-template-columns: 30% 50%;
+  margin: 1rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

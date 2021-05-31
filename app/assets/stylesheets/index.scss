@@ -7,3 +7,49 @@
   display: grid;
   grid-template-columns: 30% 70%;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.boldtxt {
+  font-family: "Bebas Neue";
+  font-weight: regular;
+}
+
+.generaltxt {
+  font-family: "Montserrat";
+}
+
+.bigtxt {
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+
+.medtxt {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+
+.smalltxt {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0.5rem;
+}
+
+.nodeco {
+  text-decoration: none;
+  color: black;
+}
+
+.all {
+  font-size: 1.75rem;
+  margin: 0.5rem;
+  font-family: "Bebas Neue";
+}
+
+.nodeco:hover {
+  color: #3498db;
+}

@@ -1,30 +1,40 @@
-<h1>Sign Up</h1>
+<head>
+  <link rel="stylesheet" type="text/css" href="form.scss"> 
+  <link rel="shortcut icon" type="image/png" href="logo.png"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <h1 class="boldtxt bigtxt">Sign Up</h1>
 
-<%= form_for @user do |f| %>
+  <%= form_for @user do |f| %>
 
-  <% if @user.errors.any? %>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <% if @user.errors.any? %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     <% end %>
-    </ul>
+
+    <div class="center">
+      <div class="form_layout">
+        <%= f.label :email, class:"boldtxt medtxt" %>
+        <%= f.text_field :email, class:"textField" %>
+      </div>
+
+      <div class="form_layout">
+        <%= f.label :username, class:"boldtxt medtxt" %>
+        <%= f.text_field :username, class:"textField" %>
+      </div>
+
+      <div class="form_layout">
+        <%= f.label :password, class:"boldtxt medtxt" %>
+        <%= f.password_field :password, class:"textField" %>
+      </div>
+    </div>
+
+    <%= f.submit :"Sign Up", :class => "medtxt boldtxt" %>
+
   <% end %>
-
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <%= f.submit :"Sign Up" %>
-
-<% end %>
+</body>

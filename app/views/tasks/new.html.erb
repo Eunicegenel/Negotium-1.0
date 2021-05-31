@@ -1,32 +1,43 @@
-<%= form_with scope: :task, url: tasks_create_path, local: true do |f| %>
-  <% if @task.errors.any? %>
-    <ul>
-    <% @task.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<head>
+  <link rel="stylesheet" type="text/css" href="form.scss"> 
+  <link rel="shortcut icon" type="image/png" href="logo.png"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <%= form_with scope: :task, url: tasks_create_path, local: true do |f| %>
+    <% if @task.errors.any? %>
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li class="smalltxt generaltxt"><%= message %></li>
+      <% end %>
+      </ul>
     <% end %>
-    </ul>
+
+    <div class="center">
+      <div class="form_layout">
+        <%= f.label :"Task Name", class:"boldtxt medtxt" %>
+        <%= f.text_field :task_name, class:"textField" %>
+      </div>
+
+      <div class="form_layout">
+        <%= f.label :"Task Details", class:"boldtxt medtxt" %>
+        <%= f.text_field :task_details, class:"textArea" %>
+      </div>
+
+      <div class="form_layout">
+        <%= f.label :"Due Date", class:"boldtxt medtxt" %>
+        <%= f.date_field :due_date, class:"textField" %>
+      </div>
+    </div>
+    
+    <div>
+      <%= f.hidden_field :user_id, value: @id %>
+      <%= f.hidden_field :category_id, value: @category_id %>
+      <%= f.hidden_field :complete, value: 0 %>
+      <%= hidden_field_tag(:category_id, @category_id) %>
+    </div>
+    
+    <%= f.submit "SAVE GAME", :class => "medtxt boldtxt" %>
   <% end %>
-
-  <div class="create_details">
-    <%= f.label :"Task Name", class:"textLabel" %>
-    <%= f.text_field :task_name, class:"textField" %>
-  </div>
-    <div class="create_details">
-    <%= f.label :"Task Details", class:"textLabel" %>
-    <%= f.text_field :task_details, class:"textField" %>
-  </div>
-
-  <div class="create_details">
-    <%= f.label :"Due Date", class:"textLabel" %>
-    <%= f.date_field :due_date, class:"textField" %>
-  </div>
-  
-  <div>
-    <%= f.hidden_field :user_id, value: @id %>
-    <%= f.hidden_field :category_id, value: @category_id %>
-    <%= f.hidden_field :complete, value: 0 %>
-    <%= hidden_field_tag(:category_id, @category_id) %>
-  </div>
-  
-  <%= f.submit "SAVE GAME", :class => "submit" %>
-<% end %>
+</body>
