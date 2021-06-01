@@ -23,11 +23,12 @@ class TasksController < ApplicationController
   end
 
   def create
+    @category_id = params[:category_id]
     @task = Task.new(task_params)
     @id = session[:user_id]
     if @task.save 
-      tasks = Task.where(user_id:@id).sort_by {|obj| obj.updated_at}.reverse
-      @category = Category.find_by_id(tasks[0].category_id).category_name
+      @category = Category.find_by_id(@category_id).category_name
+      tasks = Task.where(category_id:@category_id).sort_by {|obj| obj.updated_at}.reverse
       tasks[0].update(category_name:@category)
       @task.errors.full_messages
       redirect_to '/authorized'
@@ -59,6 +60,6 @@ class TasksController < ApplicationController
   private 
 
   def task_params
-    params.require(:task).permit(:task_name,:user_id,:category_id,:task_details,:due_date,:complete)
+    params.require(:task).permit(:task_name,:category_id,:task_details,:due_date,:complete)
   end
 end

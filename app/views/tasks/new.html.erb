@@ -32,12 +32,11 @@
     </div>
     
     <div>
-      <%= f.hidden_field :user_id, value: @id %>
       <%= f.hidden_field :category_id, value: @category_id %>
       <%= f.hidden_field :complete, value: 0 %>
       <%= hidden_field_tag(:category_id, @category_id) %>
     </div>
     
-    <%= f.submit "SAVE GAME", :class => "medtxt boldtxt" %>
+    <%= f.submit "SAVE TASK", :class => "medtxt boldtxt" %>
   <% end %>
 </body>

@@ -2,58 +2,72 @@
   <link rel="stylesheet" type="text/css" href="index.scss"> 
   <link rel="shortcut icon" type="image/png" href="logo.png"/>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway&display=swap" rel="stylesheet"> 
 </head>
 <body>
-  <div class="journal">
-    <div class="sidebar">
-      <h1 class="bigtxt boldtxt">Hello <%= current_user.username %> !</h1>
-      <% if !!flash[:alert] %>
-        <p class="generaltxt medtxt"><%= flash[:alert] %></p> <br>
-      <% end %>
-      <%= button_to "Logout", '/logout', class:"medtxt boldtxt", method: :get %>
-      <%= button_to "New Category", '/categories', class:"medtxt boldtxt", method: :get %>
+  <div class="sidebar">
+    <h1 class="bigtxt boldtxt">Hello <%= current_user.username %> !</h1>
+    <% if !!flash[:alert] %>
+      <p class="generaltxt medtxt"><%= flash[:alert] %></p> <br>
+    <% end %>
+    <%= button_to "Logout", '/logout', class:"medtxt boldtxt", method: :get %>
+    <%= button_to "New Category", '/categories', class:"medtxt boldtxt", method: :get %>
 
-      <%= link_to "All", authorized_path(:category_id => nil), :class => "all nodeco" %>
+    <%= link_to "All", authorized_path(:category_id => nil), :class => "all nodeco" %>
 
-      <% @category.each do |c| %>
-        <%= link_to authorized_path(:category_id => c.id), :class => "nodeco" do %>
+    
+    <% @category.each do |c| %>
+      <div class="category">
+        <div class="cat-info">
+          <%= link_to authorized_path(:category_id => c.id), :class => "nodeco" do %>
+            <h4 class="category_name"><%= c.category_name %></h4>
+          <% end %>
+        </div>
+
+        <div class="cat_actions">
           <div>
-            <h4 class="medtxt boldtxt"><%= c.category_name %></h4>
-            <h5 class="smalltxt generaltxt"><%= c.category_details %></h5>
+            <%= link_to tasks_new_path(:category_id => c.id) do %>
+              <img class="new_icon" src="https://img.icons8.com/dusk/64/000000/plus-2-math.png"/>
+            <% end %>
           </div>
-        <% end %>
-        <%= button_to "New Task", tasks_new_path(:category_id => c.id), :class => "smalltxt generaltxt" %>
-        <%= button_to 'Update Category', categories_change_path(:category_id => c.id), :class => "smalltxt generaltxt" %>
-        <%= form_with scope: :category, method: :delete, url: categories_delete_path, local: true do |f| %>
-          <div class="delete_form" id="deleteForm">                                          
-            <%= hidden_field_tag(:id, c.id) %>
-            <%= f.submit :"Delete Category", :class => "smalltxt generaltxt", :id => "erase" %>
-          </div>  
-        <% end %>
-      <% end %>
-    </div>
 
-    <div class="main">
-      <% @task.each do |t| %>
-        <h4 class="medtxt boldtxt"><%= t.task_name %></h4>
-        <h5 class="smalltxt generaltxt"><%= t.category_name %></h5>
-        <h5 class="smalltxt generaltxt"><%= t.due_date.strftime("%A") %>, <%= t.due_date.to_date %></h5>
-        <h5 class="smalltxt generaltxt"><%= t.task_details %></h5>
-        <%= button_to "Update Task", tasks_change_path(:task_id => t.id), :class => "smalltxt generaltxt" %>
-        <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
-          <div class="delete_form" id="deleteForm">                                          
-            <%= hidden_field_tag(:task_id, t.id) %>
-            <%= f.submit :"Delete Task", :class => "smalltxt generaltxt", :id => "erase" %>
+          <div>
+            <%= link_to categories_change_path(:category_id => c.id) do %>
+              <img class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
+            <% end %>
+          </div>
+
+          <div class="delete_form" id="deleteForm"> 
+            <%= form_with scope: :category, method: :delete, url: categories_delete_path, local: true do |f| %>                                     
+              <%= hidden_field_tag(:id, c.id) %>
+              <!-- <%= f.submit :"Delete Category", :class => "smalltxt generaltxt", :id => "erase" %> -->
+              <%= f.submit "Comment", :class => "delete_icon", :type => :image, :src => "https://img.icons8.com/dusk/64/000000/delete-sign.png" %>
+            <% end %>
           </div>  
-        <% end %>
-        <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
-          <div class="update_complete" id="updateComplete">                                          
-            <%= hidden_field_tag(:task_id, t.id) %>
-            <%= f.submit :"Finish Task", :class => "smalltxt generaltxt", :id => "finish" %>
-          </div>  
-        <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+  <div class="main">
+    <% @task.each do |t| %>
+      <h4 class="medtxt boldtxt"><%= t.task_name %></h4>
+      <h5 class="smalltxt generaltxt"><%= t.category_name %></h5>
+      <h5 class="smalltxt generaltxt"><%= t.due_date.strftime("%A") %>, <%= t.due_date.to_date %></h5>
+      <h5 class="smalltxt generaltxt"><%= t.task_details %></h5>
+      <%= button_to "Update Task", tasks_change_path(:task_id => t.id), :class => "smalltxt generaltxt" %>
+      <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
+        <div class="delete_form" id="deleteForm">                                          
+          <%= hidden_field_tag(:task_id, t.id) %>
+          <%= f.submit :"Delete Task", :class => "smalltxt generaltxt", :id => "erase" %>
+        </div>  
       <% end %>
-    </div>
+      <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
+        <div class="update_complete" id="updateComplete">                                          
+          <%= hidden_field_tag(:task_id, t.id) %>
+          <%= f.submit :"Finish Task", :class => "smalltxt generaltxt", :id => "finish" %>
+        </div>  
+      <% end %>
+    <% end %>
   </div>
 </body>

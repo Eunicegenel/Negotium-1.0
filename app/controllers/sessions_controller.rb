@@ -20,12 +20,12 @@ class SessionsController < ApplicationController
     if @category_id == nil
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
       catids = @category.pluck(:id)
-      @task = Task.where(user_id: session[:user_id],category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
+      @task = Task.where(category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
     else
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
       @chosen_category = Category.where(id: @category_id).sort_by {|obj| obj.updated_at}.reverse
       catids = @chosen_category.pluck(:id)
-      @task = Task.where(user_id: session[:user_id],category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
+      @task = Task.where(category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
     end
   end
 
