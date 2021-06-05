@@ -20,12 +20,20 @@ class SessionsController < ApplicationController
     if @category_id == nil
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
       catids = @category.pluck(:id)
-      @task = Task.where(category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
+      task = Task.where(category_id: catids,complete: 0)
+      @urgent_task = task.where("due_date <= ?", Date.today).sort_by {|obj| obj.due_date}
+      @urgent_task_count = task.where("due_date <= ?", Date.today).count
+      @upcoming_task = task.where("due_date > ?", Date.today).sort_by {|obj| obj.due_date}
+      @upcoming_task_count = task.where("due_date > ?", Date.today).count
     else
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
       @chosen_category = Category.where(id: @category_id).sort_by {|obj| obj.updated_at}.reverse
       catids = @chosen_category.pluck(:id)
-      @task = Task.where(category_id: catids,complete: 0).sort_by {|obj| obj.updated_at}.reverse
+      task = Task.where(category_id: catids,complete: 0)
+      @urgent_task = task.where("due_date <= ?", Date.today).sort_by {|obj| obj.due_date}
+      @urgent_task_count = task.where("due_date <= ?", Date.today).count
+      @upcoming_task = task.where("due_date > ?", Date.today).sort_by {|obj| obj.due_date}
+      @upcoming_task_count = task.where("due_date > ?", Date.today).count
     end
   end
 
@@ -40,6 +48,6 @@ class SessionsController < ApplicationController
 
   def out
     session[:user_id] = nil
-    redirect_to '/welcome' 
+    redirect_to root_path
   end
 end

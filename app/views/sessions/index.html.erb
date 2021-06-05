@@ -2,72 +2,157 @@
   <link rel="stylesheet" type="text/css" href="index.scss"> 
   <link rel="shortcut icon" type="image/png" href="logo.png"/>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
+  <%= image_tag("computer.png", :class => "bgif layer", :pos => 1.5) %>
   <div class="sidebar">
-    <h1 class="bigtxt boldtxt">Hello <%= current_user.username %> !</h1>
-    <% if !!flash[:alert] %>
-      <p class="generaltxt medtxt"><%= flash[:alert] %></p> <br>
-    <% end %>
-    <%= button_to "Logout", '/logout', class:"medtxt boldtxt", method: :get %>
-    <%= button_to "New Category", '/categories', class:"medtxt boldtxt", method: :get %>
+    <h1 class="profile">Hello <%= current_user.username %> !</h1>
+    <!-- <%= link_to "Logout", '/logout', class:"logout", method: :get %>
+    <%= link_to "New Category", '/categories', class:"new_category", method: :get %> -->
 
-    <%= link_to "All", authorized_path(:category_id => nil), :class => "all nodeco" %>
+    <div class="sidebar_actions">
+      <%= link_to '/categories', method: :get do %>
+        <%= image_tag("add.png", :class => "new_category", :title => "Add Category") %>
+      <% end %>
 
+      <%= image_tag("bell.png", :class => "bell_icon", :id => "notif", :value => "0", :title => "Show Urgent Tasks") %>
+      
+      <%= image_tag("info.png", :class => "info_icon", :id => "info", :title => "Show Instructions") %>
+      
+      <%= link_to '/logout', method: :get do %>
+        <%= image_tag("logout.png", :class => "logout_icon", :title => "Sign Out") %>
+      <% end %>
+    </div>
+
+    <%= link_to "Show All Tasks", authorized_path(:category_id => nil), :class => "all" %>
     
-    <% @category.each do |c| %>
-      <div class="category">
-        <div class="cat-info">
-          <%= link_to authorized_path(:category_id => c.id), :class => "nodeco" do %>
-            <h4 class="category_name"><%= c.category_name %></h4>
-          <% end %>
-        </div>
-
-        <div class="cat_actions">
-          <div>
-            <%= link_to tasks_new_path(:category_id => c.id) do %>
-              <img class="new_icon" src="https://img.icons8.com/dusk/64/000000/plus-2-math.png"/>
+    <div class="side_scroll">
+      <% @category.each do |c| %>
+        <div class="category">
+          <div class="cat-info">
+            <%= link_to authorized_path(:category_id => c.id), :class => "nodeco" do %>
+              <h4 class="category_name"><%= c.category_name %></h4>
             <% end %>
           </div>
 
-          <div>
-            <%= link_to categories_change_path(:category_id => c.id) do %>
-              <img class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
-            <% end %>
-          </div>
+          <div class="cat_actions">
+            <div>
+              <%= link_to tasks_new_path(:category_id => c.id) do %>
+                <img title="Add Task" class="new_icon" src="https://img.icons8.com/ios/64/000000/add--v1.png"/>
+              <% end %>
+            </div>
 
-          <div class="delete_form" id="deleteForm"> 
-            <%= form_with scope: :category, method: :delete, url: categories_delete_path, local: true do |f| %>                                     
-              <%= hidden_field_tag(:id, c.id) %>
-              <!-- <%= f.submit :"Delete Category", :class => "smalltxt generaltxt", :id => "erase" %> -->
-              <%= f.submit "Comment", :class => "delete_icon", :type => :image, :src => "https://img.icons8.com/dusk/64/000000/delete-sign.png" %>
-            <% end %>
-          </div>  
+            <div>
+              <%= link_to categories_change_path(:category_id => c.id) do %>
+                <img title="Update Category" class="update_icon" src="https://img.icons8.com/pastel-glyph/64/000000/loop.png"/>
+              <% end %>
+            </div>
+
+            <div class="delete_form" id="deleteForm"> 
+              <%= form_with scope: :category, method: :delete, url: categories_delete_path, local: true do |f| %>                                     
+                <%= hidden_field_tag(:id, c.id) %>
+                <%= f.submit "Comment", :class => "delete_icon", :title => "Delete Category", :type => :image, :src => "https://img.icons8.com/material-rounded/24/000000/delete-forever.png" %>
+              <% end %>
+            </div>  
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
     
   </div>
   <div class="main">
-    <% @task.each do |t| %>
-      <h4 class="medtxt boldtxt"><%= t.task_name %></h4>
-      <h5 class="smalltxt generaltxt"><%= t.category_name %></h5>
-      <h5 class="smalltxt generaltxt"><%= t.due_date.strftime("%A") %>, <%= t.due_date.to_date %></h5>
-      <h5 class="smalltxt generaltxt"><%= t.task_details %></h5>
-      <%= button_to "Update Task", tasks_change_path(:task_id => t.id), :class => "smalltxt generaltxt" %>
-      <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
-        <div class="delete_form" id="deleteForm">                                          
-          <%= hidden_field_tag(:task_id, t.id) %>
-          <%= f.submit :"Delete Task", :class => "smalltxt generaltxt", :id => "erase" %>
-        </div>  
+    <div class="log" id="logs">
+      <% if !!flash[:alert] %>
+        <p class="logtxt"><%= flash[:alert] %></p> <br>
       <% end %>
-      <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
-        <div class="update_complete" id="updateComplete">                                          
-          <%= hidden_field_tag(:task_id, t.id) %>
-          <%= f.submit :"Finish Task", :class => "smalltxt generaltxt", :id => "finish" %>
-        </div>  
-      <% end %>
-    <% end %>
+    </div>
+
+    <div class="urgent" id="urgent_area">
+      <p class="urgent_txt">Urgent Tasks</p>
+      <div class="task_scroll">
+        <div class="task_area">
+          <% if @urgent_task_count == 0 %>
+            <p class="notask"> No urgent tasks </p>
+          <% else %>
+            <% @urgent_task.each do |t| %>
+              <div class="task">
+                <h4 class="task_name"><%= t.task_name %></h4>
+                <h5 class="category_task"><%= t.category_name %></h5>
+                <h5 class="day"><%= t.due_date.strftime("%A") %></h5>
+                <h5 class="date"><%= t.due_date.to_date %></h5>
+                
+                <div class="task_actions">
+                  <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
+                    <div class="update_complete" id="updateComplete">                                          
+                      <%= hidden_field_tag(:task_id, t.id) %>
+                      <%= f.submit "finish", :class => "finish_icon",  :title => "Complete Task", :type => :image, :src => "https://img.icons8.com/dusk/50/000000/checked-checkbox.png" %>
+                    </div>  
+                  <% end %>
+
+                  <%= link_to tasks_change_path(:task_id => t.id) do %>
+                    <img title="Update Task" class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
+                  <% end %>
+
+                  <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
+                    <div class="delete_form" id="deleteForm">                                          
+                      <%= hidden_field_tag(:task_id, t.id) %>
+                      <%= f.submit "delete", :class => "delete_icon", :title => "Delete Task", :type => :image, :src => "https://img.icons8.com/dusk/64/000000/delete-sign.png" %>
+                    </div>  
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="upcoming" id="upcoming_area">
+      <p class="upcoming_txt">Upcoming Tasks</p>
+      <div class="task_scroll">
+        <div class="task_area">
+          <% if @upcoming_task_count == 0 %>
+            <p class="notask"> No upcoming tasks </p>
+          <% else %>
+            <% @upcoming_task.each do |t| %>
+              <div class="task">
+                <h4 class="task_name"><%= t.task_name %></h4>
+                <h5 class="category_task"><%= t.category_name %></h5>
+                <h5 class="day"><%= t.due_date.strftime("%A") %></h5>
+                <h5 class="date"><%= t.due_date.to_date %></h5>
+                
+                <div class="task_actions">
+                  <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
+                    <div class="update_complete" id="updateComplete">                                          
+                      <%= hidden_field_tag(:task_id, t.id) %>
+                      <%= f.submit "finish", :class => "finish_icon", :title => "Complete Task", :type => :image, :src => "https://img.icons8.com/dusk/50/000000/checked-checkbox.png" %>
+                    </div>  
+                  <% end %>
+
+                  <%= link_to tasks_change_path(:task_id => t.id) do %>
+                    <img title="Update Task" class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
+                  <% end %>
+
+                  <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
+                    <div class="delete_form" id="deleteForm">                                          
+                      <%= hidden_field_tag(:task_id, t.id) %>
+                      <%= f.submit "delete", :class => "delete_icon", :title => "Delete Task", :type => :image, :src => "https://img.icons8.com/dusk/64/000000/delete-sign.png" %>
+                    </div>  
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+  
+  <%= javascript_pack_tag 'index.js' %>
+  <!-- <a href="https://storyset.com/work">Work illustrations by Storyset</a> 
+  <a target="_blank" href="https://icons8.com/icon/REaAov7RbGMN/update">Update</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+  <a target="_blank" href="https://icons8.com/icon/84025/bell">Bell</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+  <a target="_blank" href="https://icons8.com/icon/65298/logout-rounded-left">Logout Rounded Left</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+  <a target="_blank" href="https://icons8.com/icon/83449/delete-bin">Delete Bin</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
 </body>

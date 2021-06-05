@@ -5,7 +5,8 @@
 }
 
 body {
-  background-color: #e9ded7;
+  background-color: #e3ddc5;
+  overflow-y: hidden;
 }
 
 .sidebar {
@@ -15,27 +16,81 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20vw;
-  height: 100vh;
+  width: 17vw;
+  height: 102.5vh;
   margin: 1rem;
-  background-color: #ebd0c3;
+  background-image: linear-gradient(to bottom, #1b1515, #3d2d2b, #624842, #886657, #ae866c);
+}
+
+.profile {
+  margin-top: 1rem;
+  font-family: "Dancing Script";
+  font-size: 2rem;
+  color: #e3ddc5;
+}
+
+.all {
+  font-family: "Indie Flower";
+  font-weight: 600;
+  color: #543f3f;
+  font-size: 1rem;
+  width: 9rem;
+  padding: 1rem 0.5rem;
+  background-color: #e3ddc5;
+  margin-top: 1rem;
+  border-radius: 0.625rem;
+  transition: 0.5s ease;
+  text-align: center;
+  box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: -5px 1px 5px  rgba(0,0,0,0.6);
+}
+
+.all:hover {
+  animation: shake 0.25s;
+  animation-iteration-count: once;
 }
 
 .category {
-  width: 80%;
-  padding: 1rem;
-  background-color: #ecf0f1;
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 30% 70%;
+  width: 9rem;
+  height: 4rem;
+  padding: 0.5rem;
+  background-color: #e3ddc5;
+  margin-bottom: 1rem;
   border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  transition: 0.5s ease;
+  box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: -5px 1px 5px  rgba(0,0,0,0.6);
+}
+
+.category:hover {
+  animation: shake 0.25s;
+  animation-iteration-count: once;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 .category_name {
-  font-family: "Raleway";
-  color: #152128;
+  font-family: "Indie Flower";
+  color: #543f3f;
   font-size: 1rem;
+  transition: 0.5s ease;
+}
+
+.category_name:hover {
+  font-size: 1.2rem;
 }
 
 .category_details {
@@ -47,9 +102,12 @@ body {
 .cat_info {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 .cat_actions {
+  margin-top: 0.5rem;
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
@@ -76,6 +134,56 @@ body {
   transform: scale(1.2);
 }
 
+.new_category, .logout_icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  transition: ease 0.5s;
+  border-radius: 50%;
+  margin: 0.5rem;
+}
+
+.new_category:hover, .logout_icon:hover {
+  transform: rotate(180deg);
+}
+
+.bell_icon, .info_icon {
+  cursor: pointer;
+  width: 2.25rem;
+  height: 2.25rem;
+  transition: ease 0.5s;
+  border-radius: 50%;
+  margin: 0.5rem;
+}
+
+.bell_icon:hover, .info_icon:hover {
+  transform: rotate(360deg);
+}
+
+.sidebar_actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side_scroll {
+  margin-top: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  width: 12rem;
+  height: 22rem;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.side_scroll::-webkit-scrollbar {
+	display: none;
+}
+
+
 .new_icon {
   margin-right: 1rem;
   background-repeat: none;
@@ -87,10 +195,167 @@ body {
   transform: scale(1.2);
 }
 
+.finish_icon {
+  margin-right: 1rem;
+  width: 1.5rem;
+  transition: ease 0.5s;
+}
+
+.finish_icon:hover {
+  transform: scale(1.2);
+}
+
 .main {
   position: absolute;
   top: 0vh;
-  left: 30vw;
+  left: 20vw;
+  width: 60vw;
   display: flex;
   flex-direction: column;
 }
+
+.log {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+}
+
+#logs {
+  height: 10vh;
+}
+
+.logtxt {
+  color: #543f3f;
+  font-family: "Indie Flower";
+  font-size: 1.5rem;
+}
+
+.task {
+  background-color: #e3ddc5;
+  width: 10vw;
+  height: 22vh;
+  padding: 1rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
+  box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: -5px 1px 5px  rgba(0,0,0,0.6);
+}
+
+.task_scroll {
+  height: 75%;
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+.task_area {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.task_name {
+  color: #543f3f;
+  font-family: "Questrial";
+  font-size: 1.25rem;
+}
+
+.category_task {
+  margin-top: 1rem;
+  color: #543f3f;
+  font-family: "Questrial";
+  font-size: 1rem;
+}
+
+.day {
+  margin-top: 0.5rem;
+  color: #543f3f;
+  font-family: "Questrial";
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.date {
+  margin-top: 0.5rem;
+  color: #543f3f;
+  font-family: "Questrial";
+  font-size: 1rem;
+}
+
+.task_actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.urgent {
+  background-color: rgba(173,55,37,0.90);
+  margin-bottom: 3vh;
+  padding: 2vh 2vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  border-radius: 25px;
+  transition: 0.5s ease;
+}
+
+.upcoming {
+  background-color: rgba(64,46,50,0.90);
+  margin-top: 1vh;
+  padding: 2vh;
+  flex-direction: column;
+  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  border-radius: 25px;
+  transition: 0.5s ease;
+}
+
+#urgent_area, #upcoming_area {
+  height: 38vh;
+  display: flex;
+}
+
+.upcoming_txt, .urgent_txt {
+  margin-left: 1rem;
+  margin-bottom: 0.75rem;
+  color: #e3ddc5;
+  font-family: "Dancing Script";
+  font-size: 2rem;
+  width: 20vw;
+  font-weight: bold;
+}
+
+.bgif {
+  position: fixed;
+  z-index: -5;
+  left: 68vw;
+  top: 24vh;
+  width: 25rem;
+}
+
+.notask {
+  color: #e3ddc5;
+  font-family: "Indie Flower";
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+

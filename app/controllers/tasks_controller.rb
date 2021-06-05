@@ -30,6 +30,12 @@ class TasksController < ApplicationController
       @category = Category.find_by_id(@category_id).category_name
       tasks = Task.where(category_id:@category_id).sort_by {|obj| obj.updated_at}.reverse
       tasks[0].update(category_name:@category)
+      task_date = tasks[0].due_date
+      if task_date <= Date.today
+        tasks[0].update(status:"urgent")
+      else 
+        tasks[0].update(status:"upcoming")
+      end
       @task.errors.full_messages
       redirect_to '/authorized'
     else

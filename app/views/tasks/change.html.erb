@@ -9,8 +9,7 @@
 
   <div class="update_form" id="updateForm">
       <div class="update_details">
-      <%= f.hidden_field :id, value:@task.id %>
-      <%= f.hidden_field :user_id, value:@task.user_id %>
+        <%= f.hidden_field :id, value:@task.id %>
       </div>
 
     <div class="update_details">
@@ -29,7 +28,6 @@
     </div>
 
     <div>
-      <%= f.hidden_field :user_id, value: @task.user_id %>
       <%= f.hidden_field :category_id, value: @task.category_id %>
       <%= f.hidden_field :complete, value: @task.complete %>
     </div>
