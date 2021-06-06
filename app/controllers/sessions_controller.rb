@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def index
+    @task_id = params[:task_id] 
     @category_id = params[:category_id] 
     if @category_id == nil
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
@@ -27,13 +28,16 @@ class SessionsController < ApplicationController
       @upcoming_task_count = task.where("due_date > ?", Date.today).count
     else
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
-      @chosen_category = Category.where(id: @category_id).sort_by {|obj| obj.updated_at}.reverse
-      catids = @chosen_category.pluck(:id)
-      task = Task.where(category_id: catids,complete: 0)
+      @chosen_category = Category.find_by_id(@category_id)
+      task = Task.where(category_id: @category_id,complete: 0)
       @urgent_task = task.where("due_date <= ?", Date.today).sort_by {|obj| obj.due_date}
       @urgent_task_count = task.where("due_date <= ?", Date.today).count
       @upcoming_task = task.where("due_date > ?", Date.today).sort_by {|obj| obj.due_date}
       @upcoming_task_count = task.where("due_date > ?", Date.today).count
+
+      if @task_id != nil
+        @chosen_task = Task.find_by_id(@task_id)
+      end
     end
   end
 

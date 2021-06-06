@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -54,7 +55,7 @@ body {
 
 .category {
   width: 9rem;
-  height: 4rem;
+  height: auto;
   padding: 0.5rem;
   background-color: #e3ddc5;
   margin-bottom: 1rem;
@@ -96,7 +97,7 @@ body {
 .category_details {
   font-family: "Raleway";
   color: #425f5e;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .cat_info {
@@ -205,7 +206,7 @@ body {
   transform: scale(1.2);
 }
 
-.main {
+#main {
   position: absolute;
   top: 0vh;
   left: 20vw;
@@ -238,7 +239,7 @@ body {
   padding: 1rem;
   margin-right: 0.5rem;
   margin-left: 0.5rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   border-radius: 0.625rem;
@@ -357,5 +358,76 @@ body {
   font-family: "Indie Flower";
   font-size: 1.75rem;
   font-weight: bold;
+}
+
+#modal_bg {
+  display: none;
+  cursor: pointer;
+  background-color: rgba(4,4,4,0.7);
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  transition: ease 0.5s;
+}
+
+#show {
+  opacity: 0;
+  display: flex;
+  background-color: rgba(47,72,88,0.95);
+  height: auto;
+  max-height: 83.5vh;
+  width: 13vw;
+  position: fixed;
+  top: 5vh;
+  left: 82.5vw;
+  box-shadow: -4px 4px 4px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -4px 4px 4px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -4px 4px 4px  rgba(0,0,0,0.6);
+  -o-box-shadow: -4px 4px 4px  rgba(0,0,0,0.6);
+  border-radius: 25px;
+  transition: 0.5s ease;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.cat_area  {
+  width: 100%;
+}
+
+.cat_name, .tas_name {
+  margin: 1rem;
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cat_detes, .tas_detes {
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.tas_date {
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-size: 1rem;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.tas_scroll {
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 

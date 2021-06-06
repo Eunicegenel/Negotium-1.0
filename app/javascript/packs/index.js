@@ -25,15 +25,57 @@ document.getElementById("notif").addEventListener("click", function() {
     document.getElementById("urgent_area").style.height = "38vh";
     document.getElementById("upcoming_area").style.opacity = "1";
   }
-}); 
+});
+
+function refresh() {
+  if (document.getElementById("show").getAttribute("check") === "0") {
+    document.getElementById("show").style.opacity = "0";
+    if (document.getElementsByClassName("logtxt")[0] === undefined){
+      document.getElementById("logs").style.opacity = "0";
+      document.getElementById("logs").style.height = "5vh";
+    } else {
+      document.getElementById("logs").style.opacity = "0"; 
+    }
+  } else {
+    setTimeout(function(){ document.getElementById("show").style.opacity = "1"; }, 50);
+    if (document.getElementsByClassName("logtxt")[0] === undefined){
+      document.getElementById("logs").style.opacity = "0";
+      document.getElementById("logs").style.height = "5vh";
+      document.getElementById("main").style.width = "50vw";
+      document.getElementById("show").style.left = "72.5vw";
+      document.getElementById("show").style.width = "23vw";
+    } else {
+      document.getElementById("main").style.width = "50vw";
+      document.getElementById("show").style.left = "72.5vw";
+      document.getElementById("show").style.width = "23vw";
+      setTimeout(function(){ document.getElementById("logs").style.opacity = "0"; 
+      setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 3000);
+    }
+  }
+}
+
+function close_modal() {
+  document.getElementById("modal_bg").style.opacity = "0";
+  setTimeout(function(){ document.getElementById("modal_bg").style.display = "none"; }, 500);
+}
+
+document.getElementById("modal_bg").addEventListener("click", function() {
+  close_modal();
+});
+
 
 window.onload = function() {
-  if (document.getElementsByClassName("logtxt")[0] === undefined){
-    document.getElementById("logs").style.opacity = "0";
-    document.getElementById("logs").style.height = "5vh";
-  } else {
-    setTimeout(function(){ document.getElementById("logs").style.opacity = "0"; 
-    setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 3000);
-  }
-
+  refresh();
 };
+
+if (window.performance) {
+  console.info("window.performance works fine on this browser");
+}
+console.info(performance.navigation.type);
+if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  console.info( "This page is reloaded" );
+  refresh();
+} else {
+  console.info( "This page is not reloaded");
+}
+
