@@ -54,6 +54,10 @@ function refresh() {
   }
 }
 
+function hide() {
+  document.getElementById("logs").style.opacity = "0";
+}
+
 function close_modal() {
   document.getElementById("modal_bg").style.opacity = "0";
   setTimeout(function(){ document.getElementById("modal_bg").style.display = "none"; }, 500);
@@ -64,8 +68,8 @@ document.getElementById("modal_bg").addEventListener("click", function() {
 });
 
 
-window.onload = function() {
-  refresh();
+window.onload = async function() {
+  test = await refresh();
 };
 
 if (window.performance) {

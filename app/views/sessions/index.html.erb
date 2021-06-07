@@ -78,7 +78,7 @@
             <% @urgent_task.each do |t| %>
               <div class="task">
                 <%= link_to authorized_path(:category_id => t.category_id, :task_id => t.id), :class => "nodeco" do %>
-                  <h4 class="task_name"><%= t.task_name %></h4>
+                  <h4 class="task_name" onclick="hide()"><%= t.task_name %></h4>
                 <% end %>
                 <h5 class="category_task"><%= t.category_name %></h5>
                 <h5 class="day"><%= t.due_date.strftime("%A") %></h5>
