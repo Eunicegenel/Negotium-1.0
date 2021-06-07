@@ -68,9 +68,6 @@ document.getElementById("modal_bg").addEventListener("click", function() {
 });
 
 
-window.onload = async function() {
-  test = await refresh();
-};
 
 if (window.performance) {
   console.info("window.performance works fine on this browser");
