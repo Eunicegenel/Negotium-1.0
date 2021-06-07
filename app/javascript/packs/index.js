@@ -41,13 +41,7 @@ function refresh() {
     if (document.getElementsByClassName("logtxt")[0] === undefined){
       document.getElementById("logs").style.opacity = "0";
       document.getElementById("logs").style.height = "5vh";
-      document.getElementById("main").style.width = "50vw";
-      document.getElementById("show").style.left = "72.5vw";
-      document.getElementById("show").style.width = "23vw";
     } else {
-      document.getElementById("main").style.width = "50vw";
-      document.getElementById("show").style.left = "72.5vw";
-      document.getElementById("show").style.width = "23vw";
       setTimeout(function(){ document.getElementById("logs").style.opacity = "0"; 
       setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 3000);
     }

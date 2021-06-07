@@ -21,7 +21,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    user = User.find_by_id(session[:user_id])
+    @category = user.categories.new(category_params)
     if @category.save 
       redirect_to '/authorized'
     else
@@ -32,7 +33,6 @@ class CategoriesController < ApplicationController
   def update  
     @category = Category.find_by_id(params[:id])
     if @category.update(category_params)
-      tasks = Task.where(category_id:params[:id]).update_all(category_name:@category.category_name)
       redirect_to '/authorized'
     else
       render '/categories/change'
@@ -52,6 +52,7 @@ class CategoriesController < ApplicationController
   private 
 
   def category_params
-    params.require(:category).permit(:category_name,:user_id,:category_details)
+    params.require(:category).permit(:category_name,:category_details)
+    #params.require(:category).permit(:category_name,:user_id,:category_details)
   end
 end

@@ -1,49 +1,113 @@
-.boldtxt {
-  font-family: "Bebas Neue";
-  font-weight: regular;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  scroll-behavior: smooth;
 }
 
-.generaltxt {
-  font-family: "Montserrat";
-}
-
-.bigtxt {
-  font-size: 2rem;
-  margin: 0.5rem;
-}
-
-.medtxt {
-  font-size: 1.5rem;
-  margin: 0.5rem;
-}
-
-.smalltxt {
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 0.5rem;
-}
-
-.textField {
-  width: 20rem;
-  font-size: 1.5rem;
-  padding: 0.5rem;
-}
-
-.textArea {
-  width: 20rem;
-  height: 20rem;
-  font-size: 1.5rem;
-  padding: 0.5rem;
-}
-
-.form_layout {
-  display: grid;
-  grid-template-columns: 30% 50%;
-  margin: 1rem;
-}
-
-.center {
+body {
+  background-color: #e3ddc5;
+  overflow-y: hidden;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.form_layout {
+  background-color: #84594f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  padding: 1.5rem;
+  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  border-radius: 25px;
+}
+
+.form_title {
+  margin-bottom: 1rem;
+  color: #e3ddc5;
+  font-family: "Dancing Script";
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.textField {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 18rem;
+  padding: 0.5rem;
+  font-family: "Questrial";
+  font-size: 1rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #e3ddc5;
+  color: #e3ddc5;
+  background-color: rgba(0,0,0,0);
+}
+
+.textArea {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  resize: none;
+  width: 18rem;
+  height: 20vh;
+  padding: 0.5rem;
+  font-family: "Questrial";
+  font-size: 1rem;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #e3ddc5;
+  color: #e3ddc5;
+  background-color: rgba(0,0,0,0);
+  line-height: 1.5rem;
+}
+
+.textLabel {
+  color: #e3ddc5;
+  font-family: "Indie Flower";
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.textTips {
+  margin-top: 0.5rem;
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-size: 0.8rem;
+}
+
+.savebtn {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #d59d5d;
+  border-color: #d59d5d;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #543f3f;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+.savebtn:hover {
+  background-color: #eec863;
+  border-color: #eec863;
+  transform: scale(1.1);
+}
+
+.errors {
+  margin-bottom: 1rem;
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-size: 0.8rem;
 }

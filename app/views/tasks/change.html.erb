@@ -1,4 +1,4 @@
- <%= form_with scope: :task, method: :put, url: tasks_update_path, local: true do |f| %>
+ <%= form_with scope: :task, method: :put, url: tasks_update_path(@task.id), local: true do |f| %>
   <% if @task.errors.any? %>
     <ul>
     <% @task.errors.full_messages.each do |message| %>

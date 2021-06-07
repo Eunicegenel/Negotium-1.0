@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   end
 
   def update  
-    @task = Task.find_by_id(params[:task_id])
+    @task = Task.find_by_id(params[:id])
     if @task.update(task_params)
       redirect_to '/authorized'
     else
@@ -54,18 +54,19 @@ class TasksController < ApplicationController
   end
 
   def delete  
-    Task.find_by_id(params[:task_id]).delete
+    Task.find_by_id(params[:id]).delete
     redirect_to '/authorized'
   end
 
   def finish
-    Task.find_by_id(params[:task_id]).update(complete:1)
+    Task.find_by_id(params[:id]).update(complete:1)
     redirect_to '/authorized'
   end
 
   private 
 
   def task_params
-    params.require(:task).permit(:task_name,:category_id,:task_details,:due_date,:complete)
+    params.require(:task).permit(:task_name,:task_details,:due_date,:complete)
+    # params.require(:task).permit(:task_name,:category_id,:task_details,:due_date,:complete)
   end
 end

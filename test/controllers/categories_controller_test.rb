@@ -1,9 +1,14 @@
 require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = User.create(email:"test@gmail.com",username:"test",password:"test")
+    post login_path, params: {username: @user.username, password: "test"}
+  end
+
   test 'get create category page' do
     get categories_new_path
-    assert_response :redirect
+    assert_response :success
   end
 
   test 'get edit category page' do
@@ -12,17 +17,20 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should be able to create category' do
-    post categories_create_path, params: { category: {cat_name:"Groceries",user_id:1,cat_details:"Buying groceries every Wednesday and Sunday"} }
-    assert_response :success
+    post categories_create_path, params: { category: {category_name: "Test", category_details: "Test"} }
+    assert_response :redirect
   end
 
   test 'should be able to update category' do
-    put categories_update_path, params: { category: {cat_name:"Groceries",user_id:1,cat_details:"Buying groceries every Wednesday and Sunday"} }
+    category = @user.categories.create(category_name:"Test")
+    put categories_update_path(category), params: { category: {category_name: "Test", category_details: "Test"} }
     assert_response :redirect
   end
 
   test 'should be able to delete category' do
-    delete categories_delete_path
+    category = @user.categories.create(category_name:"Test")
+    delete categories_delete_path(category)
     assert_response :redirect
   end
 end
+

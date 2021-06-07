@@ -1,34 +1,35 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="form.scss"> 
-  <link rel="shortcut icon" type="image/png" href="logo.png"/>
+  <link rel="stylesheet" type="text/css" href="form.css"> 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
   <%= form_with scope: :category, url: categories_create_path, local: true do |f| %>
-    <% if @category.errors.any? %>
-      <ul>
-      <% @category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    <% end %>
+    <div class="form_layout">
+      <h3 class="form_title">New Category</h3>
+      <div>
+        <% if @category.errors.any? %>
+          <ul>
+          <% @category.errors.full_messages.each do |message| %>
+            <li class="errors"><%= message %></li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
+      
+      <%= f.label :category_name, "Category Name", class:"textLabel" %>
+      <p class="textTips">* Maximum of 15 characters</p>
+      <%= f.text_field :category_name, class:"textField", :maxlength => 15 %>
 
-    <div class="form_layout">
-      <%= f.label :"Category Name", class:"boldtxt medtxt" %>
-      <%= f.text_field :category_name, class:"textField" %>
-    </div>
-    
-    <div class="form_layout">
-      <%= f.label :"Category Details", class:"boldtxt medtxt" %>
-      <%= f.text_field :category_details, class:"textArea" %>
-    </div>
-    
-    <div>
+      <%= f.label :category_details, "Category Details", class:"textLabel" %>
+      <p class="textTips">* Press enter to add new line</p>
+      <p class="textTips">* Maximum of 50 characters</p>
+      <%= f.text_area :category_details, class:"textArea", :maxlength => 50 %>
+
       <%= f.hidden_field :user_id, value: @id %>
+
+      <%= f.submit "SAVE CATEGORY", :class => "savebtn" %>
     </div>
-    
-    <%= f.submit "SAVE CATEGORY", :class => "medtxt boldtxt" %>
   <% end %>
 </body>
 

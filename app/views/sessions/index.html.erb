@@ -49,7 +49,7 @@
             </div>
 
             <div class="delete_form" id="deleteForm"> 
-              <%= form_with scope: :category, method: :delete, url: categories_delete_path, local: true do |f| %>                                     
+              <%= form_with scope: :category, method: :delete, url: categories_delete_path(c.id), local: true do |f| %>                                     
                 <%= hidden_field_tag(:id, c.id) %>
                 <%= f.submit "Comment", :class => "delete_icon", :title => "Delete Category", :type => :image, :src => "https://img.icons8.com/material-rounded/24/000000/delete-forever.png" %>
               <% end %>
@@ -84,7 +84,7 @@
                 <h5 class="date"><%= t.due_date.to_date %></h5>
                 
                 <div class="task_actions">
-                  <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
+                  <%= form_with scope: :task, method: :put, url: tasks_finish_path(t.id), local: true do |f| %>
                     <div class="update_complete" id="updateComplete">                                          
                       <%= hidden_field_tag(:task_id, t.id) %>
                       <%= f.submit "finish", :class => "finish_icon",  :title => "Complete Task", :type => :image, :src => "https://img.icons8.com/dusk/50/000000/checked-checkbox.png" %>
@@ -95,7 +95,7 @@
                     <img title="Update Task" class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
                   <% end %>
 
-                  <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
+                  <%= form_with scope: :task, method: :delete, url: tasks_delete_path(t.id), local: true do |f| %>
                     <div class="delete_form" id="deleteForm">                                          
                       <%= hidden_field_tag(:task_id, t.id) %>
                       <%= f.submit "delete", :class => "delete_icon", :title => "Delete Task", :type => :image, :src => "https://img.icons8.com/dusk/64/000000/delete-sign.png" %>
