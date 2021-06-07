@@ -1,6 +1,5 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="index.scss"> 
-  <link rel="shortcut icon" type="image/png" href="logo.png"/>
+  <link rel="stylesheet" type="text/css" href="index.css"> 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
@@ -78,7 +77,7 @@
             <% @urgent_task.each do |t| %>
               <div class="task">
                 <%= link_to authorized_path(:category_id => t.category_id, :task_id => t.id), :class => "nodeco" do %>
-                  <h4 class="task_name" onclick="hide()"><%= t.task_name %></h4>
+                  <h4 class="task_name"><%= t.task_name %></h4>
                 <% end %>
                 <h5 class="category_task"><%= t.category_name %></h5>
                 <h5 class="day"><%= t.due_date.strftime("%A") %></h5>

@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
 
   def welcome
     if logged_in?
-      redirect_to '/authorized'
+      redirect_to '/authorized' 
     end
   end
 
