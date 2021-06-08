@@ -26,7 +26,7 @@
       <% end %>
     </div>
 
-    <%= link_to "Show All Tasks", authorized_path(:category_id => nil), :class => "all" %>
+  <%= link_to "Show All Tasks", authorized_path(:category_id => nil), :class => "all" %>
     
     <div class="side_scroll">
       <% @category.each do |c| %>
@@ -39,13 +39,13 @@
 
           <div class="cat_actions">
             <div>
-              <%= link_to tasks_new_path(:category_id => c.id) do %>
+              <%= link_to tasks_new_path(c.id) do %>
                 <img title="Add Task" class="new_icon" src="https://img.icons8.com/ios/64/000000/add--v1.png"/>
               <% end %>
             </div>
 
             <div>
-              <%= link_to categories_change_path(:category_id => c.id) do %>
+              <%= link_to categories_change_path(c.id) do %>
                 <img title="Update Category" class="update_icon" src="https://img.icons8.com/pastel-glyph/64/000000/loop.png"/>
               <% end %>
             </div>
@@ -93,7 +93,7 @@
                     </div>  
                   <% end %>
 
-                  <%= link_to tasks_change_path(:task_id => t.id) do %>
+                  <%= link_to tasks_change_path(t.id) do %>
                     <img title="Update Task" class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
                   <% end %>
 
@@ -135,7 +135,7 @@
                     </div>  
                   <% end %>
 
-                  <%= link_to tasks_change_path(:task_id => t.id) do %>
+                  <%= link_to tasks_change_path(t.id) do %>
                     <img title="Update Task" class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
                   <% end %>
 

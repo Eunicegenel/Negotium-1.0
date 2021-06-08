@@ -15,19 +15,19 @@ Rails.application.routes.draw do
   post '/categories' => 'categories#create', as: 'categories_create'
   delete '/categories/:id' => 'categories#delete', as: 'categories_delete'
   
-  get '/categories/change' => 'categories#change', as: 'categories_change'
+  get '/categories/change/:id' => 'categories#change', as: 'categories_change'
   post '/categories/change' => 'categories#change'
   put '/categories/change/:id' => 'categories#update', as: 'categories_update'
   
-  get '/tasks' => 'tasks#new', as: 'tasks_new'
-  post '/tasks' => 'tasks#new'
+  get '/tasks' => 'tasks#new'
+  get '/tasks/:id' => 'tasks#new', as: 'tasks_new'
   delete '/tasks/:id' => 'tasks#delete', as: 'tasks_delete'
   put '/tasks/:id' => 'tasks#finish', as: 'tasks_finish'
 
   get '/tasks/new' => 'tasks#new'
   post '/tasks/new' => 'tasks#create', as: 'tasks_create'
 
-  get '/tasks/change' => 'tasks#change', as: 'tasks_change'
+  get '/tasks/change/:id' => 'tasks#change', as: 'tasks_change'
   post '/tasks/change' => 'tasks#change'
   put '/tasks/change/:id' => 'tasks#update', as: 'tasks_update'
 end

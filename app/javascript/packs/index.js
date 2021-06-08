@@ -35,7 +35,7 @@ function refresh() {
       document.getElementById("logs").style.height = "5vh";
     } else {
       setTimeout(function(){ document.getElementById("logs").style.opacity = "0"; 
-      setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 3000); 
+      setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 5000); 
     }
   } else {
     setTimeout(function(){ document.getElementById("show").style.opacity = "1"; }, 50);
@@ -44,7 +44,7 @@ function refresh() {
       document.getElementById("logs").style.height = "5vh";
     } else {
       setTimeout(function(){ document.getElementById("logs").style.opacity = "0"; 
-      setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 3000);
+      setTimeout(function(){ document.getElementById("logs").style.height = "5vh"; }, 500);}, 5000);
     }
   }
 }

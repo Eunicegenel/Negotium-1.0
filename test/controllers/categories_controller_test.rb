@@ -12,8 +12,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'get edit category page' do
-    get categories_change_path
-    assert_response :redirect
+    category = @user.categories.create(category_name:"Test")
+    get categories_change_path(category.id)
+    assert_response :success
   end
 
   test 'should be able to create category' do

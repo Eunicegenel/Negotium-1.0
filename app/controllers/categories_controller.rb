@@ -8,18 +8,14 @@ class CategoriesController < ApplicationController
       redirect_to '/authorized'
     else
       @list = user.categories.sort_by {|obj| obj.category_name}
+      @count = @list.count
       @category = Category.new
     end
   end
 
   def change
-    @category_id = params[:category_id]
-    if @category_id == nil
-      flash[:alert] = "There seems to be a problem, while updating your inputs."
-      redirect_to '/authorized'
-    else
-      @category = Category.find_by(id: @category_id)
-    end
+    @category_id = params[:id]
+    @category = Category.find_by(id: @category_id)
   end
 
   def create

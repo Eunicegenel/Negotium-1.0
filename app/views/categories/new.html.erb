@@ -36,8 +36,19 @@
     <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
 
-  
-  
+  <div class="category_layout">
+    <p class="cat_title">Category List</p>
+    <div class="cat_scroll">
+      <% if @count != 0 %>
+        <% @list.each do |l| %>
+          <p class="list_text"> <%= l.category_name %> </p>
+        <% end %>
+      <% else %>
+        <p class="list_text"> No categories made </p>
+      <% end %>
+    </div>
+  </div>
+
   <%= image_tag("board.png", :class => "board_cat layer", :pos => -1) %>
   <%= image_tag("organize.png", :class => "organize_cat layer", :pos => 1) %>
   <%= javascript_pack_tag 'form.js' %>

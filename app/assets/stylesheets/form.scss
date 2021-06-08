@@ -56,7 +56,7 @@ body {
   margin-bottom: 1rem;
   resize: none;
   width: 18rem;
-  height: 20vh;
+  height: 5rem;
   padding: 0.5rem;
   font-family: "Questrial";
   font-size: 1rem;
@@ -91,7 +91,7 @@ body {
   border-color: #eb8b1e;
   font-family: "Questrial";
   font-size: 1rem;
-  color: #e3ddc5;
+  color: #402e32;
   transition: 0.5s ease;
   font-weight: bold;
 }
@@ -112,20 +112,51 @@ body {
 
 .category_layout {
   position: fixed;
-  top: 3vh;
-  left: 0vw;
+  top: 10vh;
+  left: 73vw;
   background-color: #ad3725;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 10rem;
+  width: 13rem;
+  height: auto;
+  max-height: 10rem;
   padding: 1rem;
   box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
   -moz-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
   -webkit-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
   -o-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
   border-radius: 25px;
+}
+
+.cat_title {
+  margin-bottom: 1rem;
+  color: #e3ddc5;
+  font-family: "Dancing Script";
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+
+.cat_scroll {
+  width: 95%;
+  height: auto;
+  max-height: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scrollbar-width: thin;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.list_text {
+  margin-bottom: 0.5rem;
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .logo_cat {
@@ -139,7 +170,7 @@ body {
 .organize_cat {
   position: fixed;
   z-index: -5;
-  left: 61vw;
+  left: -3vw;
   top: 5vh;
   width: 35rem;
 }
@@ -147,7 +178,7 @@ body {
 .board_cat {
   position: fixed;
   z-index: -5;
-  left: 3vw;
+  left: 67vw;
   top: 40vh;
   width: 25rem;
 }

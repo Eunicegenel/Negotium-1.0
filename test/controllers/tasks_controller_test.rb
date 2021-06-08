@@ -8,8 +8,8 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'get create category page' do
-    get tasks_new_path
-    assert_response :redirect
+    get tasks_new_path(@category.id)
+    assert_response :success
   end
 
   test 'should be able to create task' do
@@ -18,8 +18,9 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'get change task page' do
-    get tasks_change_path
-    assert_response :redirect
+    task = @category.tasks.create(task_name:"Buy Milk",task_details:"Choco Milk = $12",due_date:"29-05-2010",complete:0)
+    get tasks_change_path(task.id)
+    assert_response :success
   end
 
   test 'should be able to update task' do
