@@ -26,7 +26,7 @@ class TasksController < ApplicationController
         redirect_to '/authorized'
       else
         @category_id = params[:category_id]
-        render '/categories'
+        render :new
       end 
     end
   end

@@ -1,9 +1,12 @@
+<% content_for(:html_title) { 'Pen Tasks' } %>
+
 <head>
   <link rel="stylesheet" type="text/css" href="index.css"> 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
+  <% @title="Home" %>
   <%= image_tag("computer.png", :class => "bgif layer", :pos => 1) %>
   <div class="sidebar">
     <%= image_tag("logolight.png", :class => "logo") %>

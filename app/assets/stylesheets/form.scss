@@ -20,7 +20,6 @@ body {
   background-color: #84594f;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 25vw;
   padding: 1.5rem;
@@ -28,7 +27,6 @@ body {
   -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
   -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
   -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
-  border-radius: 25px;
 }
 
 .form_title {
@@ -46,9 +44,17 @@ body {
   padding: 0.5rem;
   font-family: "Questrial";
   font-size: 1rem;
-  border-color: #ead8c2;
-  color: #543f3f;
-  background-color: #ead8c2;
+  color: #ead8c2;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #ead8c2;
+}
+
+.textField::placeholder, .textArea::placeholder,
+.textField::-ms-input-placeholder, .textArea::-ms-input-placeholder
+{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
 }
 
 .textArea {
@@ -60,11 +66,14 @@ body {
   padding: 0.5rem;
   font-family: "Questrial";
   font-size: 1rem;
-  border-color: #ead8c2;
-  color: #543f3f;
+  color: #ead8c2;
   background-color: #ead8c2;
   line-height: 1.5rem;
   scrollbar-width: thin;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #ead8c2;
 }
 
 .textLabel {
@@ -165,10 +174,17 @@ body {
   width: 10rem;
 }
 
+.add_layout_cat {
+  border-radius: 25px;
+  justify-content: center;
+}
+
 .update_layout_cat {
   position: fixed;
+  justify-content: center;
   top: 12vh;
   left: 3vw;
+  border-radius: 25px;
 }
 
 .add_list_cat {
@@ -179,6 +195,185 @@ body {
 .update_list_cat {
   top: 57vh;
   left: 35vw;
+}
+
+.form_layout_task {
+  position: fixed;
+  background-color: #84594f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  height: 105vh;
+  padding: 1rem;
+  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+}
+
+.add_layout_task {
+  top: -5vh;
+  left: 60vw;
+}
+
+.update_layout_task {
+  top: -5vh;
+  left: 15vw;
+}
+
+.form_title_task {
+  margin-bottom: 0.5rem;
+  color: #e3ddc5;
+  font-family: "Dancing Script";
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+
+.textField_task {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  width: 18rem;
+  padding: 0.5rem;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #ead8c2;
+}
+
+.textArea_task {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  resize: none;
+  width: 18rem;
+  height: 5rem;
+  padding: 0.5rem;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #ead8c2;
+  line-height: 1.5rem;
+  scrollbar-width: thin;
+}
+
+.textLabel_task {
+  color: #e3ddc5;
+  font-family: "Indie Flower";
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.textTips_task {
+  margin-top: 0.5rem;
+  color: #e3ddc5;
+  font-family: "Questrial";
+  font-size: 0.8rem;
+}
+
+.savebtn_task {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #eb8b1e;
+  border-color: #eb8b1e;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #402e32;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+.savebtn_task:hover {
+  color: #543f3f;
+  background-color: #eec863;
+  border-color: #eec863;
+  transform: scale(1.1);
+}
+
+.textField_user {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  width: 13rem;
+  padding: 0.5rem;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #ead8c2;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #e86a52;
+  border-color: #e86a52;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+.login_new {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #e86a52;
+  border-color: #e86a52;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+.login:hover, .login_new:hover {
+  background-color: #d15b44;
+  border-color: #d15b44;
+  transform: scale(1.1);
+}
+
+.signup {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #76578c;
+  border-color: #76578c;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+.signup:hover {
+  color: #ead8c2;
+  background-color: #614377;
+  border-color: #614377;
+  transform: scale(1.1);
 }
 
 .organize_cat {
@@ -211,4 +406,65 @@ body {
   left: 30vw;
   top: -5vh;
   width: 25rem;
+}
+
+.add_task {
+  position: fixed;
+  z-index: -5;
+  left: 10vw;
+  top: 5vh;
+  width: 35rem;
+}
+
+.update_task {
+  position: fixed;
+  z-index: -5;
+  left: 50vw;
+  top: 0vh;
+  width: 40rem;
+}
+
+.signup_img {
+  position: fixed;
+  z-index: -5;
+  left: 47vw;
+  top: 0vh;
+  width: 40rem;
+}
+
+.login_img {
+  position: fixed;
+  z-index: -5;
+  left: 10vw;
+  top: 0vh;
+  width: 40rem;
+}
+
+.form_layout_user {
+  background-color: #84594f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  padding: 1.5rem;
+  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+}
+
+.add_layout_user {
+  position: fixed;
+  justify-content: center;
+  top: 10vh;
+  left: 25vw;
+  border-radius: 25px;
+}
+
+.add_layout_login {
+  position: fixed;
+  justify-content: center;
+  top: 20vh;
+  left: 55vw;
+  border-radius: 25px;
 }

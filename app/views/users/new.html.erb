@@ -1,40 +1,42 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="form.scss"> 
-  <link rel="shortcut icon" type="image/png" href="logo.png"/>
+  <link rel="stylesheet" type="text/css" href="form.css"> 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
-  <h1 class="boldtxt bigtxt">Sign Up</h1>
+  <%= link_to '/welcome', method: :get do %>
+    <%= image_tag("pentasks.png", :class => "logo_cat") %>
+  <% end %>
 
   <%= form_for @user do |f| %>
-
-    <% if @user.errors.any? %>
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="form_layout_user add_layout_user">
+      <h3 class="form_title">Create an Account</h3>
+      <% if @user.errors.any? %>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li class="errors"><%= message %></li>
+        <% end %>
+        </ul>
       <% end %>
-      </ul>
-    <% end %>
+      
+      <%= f.label :email, "Email", class:"textLabel" %>
+      <%= f.email_field  :email, class:"textField_user", placeholder: 'Input Email' %>
 
-    <div class="center">
-      <div class="form_layout">
-        <%= f.label :email, class:"boldtxt medtxt" %>
-        <%= f.text_field :email, class:"textField" %>
-      </div>
+      <%= f.label :username, "Username", class:"textLabel" %>
+      <%= f.text_field :username, class:"textField_user", placeholder: 'Input Username' %>
 
-      <div class="form_layout">
-        <%= f.label :username, class:"boldtxt medtxt" %>
-        <%= f.text_field :username, class:"textField" %>
-      </div>
+      <%= f.label :password, "Password", class:"textLabel" %>
+      <%= f.text_field :password, class:"textField_user", placeholder: 'Input Password' %>
 
-      <div class="form_layout">
-        <%= f.label :password, class:"boldtxt medtxt" %>
-        <%= f.password_field :password, class:"textField" %>
+      <div class="actions">
+        <%= f.submit "SIGN UP", :class => "signup" %>
+        <%= link_to '/login', method: :get do %>
+          <p class="login">LOGIN</p>
+        <% end %>
       </div>
     </div>
-
-    <%= f.submit :"Sign Up", :class => "medtxt boldtxt" %>
-
   <% end %>
+
+  <%= image_tag("signup.png", :class => "signup_img layer", :pos => 1) %>
+  <%= javascript_pack_tag 'form.js' %>
 </body>

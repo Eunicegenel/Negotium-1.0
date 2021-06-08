@@ -18,12 +18,12 @@
         
       <%= f.label :category_name, "Name", class:"textLabel" %>
       <p class="textTips">* Maximum of 15 characters</p>
-      <%= f.text_field :category_name, value:@category.category_name, class:"textField", :maxlength => 15 %>
+      <%= f.text_field :category_name, placeholder: 'Input Category Name', value:@category.category_name, class:"textField", :maxlength => 15 %>
 
       <%= f.label :category_details, "Details", class:"textLabel" %>
       <p class="textTips">* Press enter to add new line</p>
       <p class="textTips">* Maximum of 50 characters</p>
-      <%= f.text_area :category_details, value:@category.category_details, class:"textArea", :maxlength => 50 %>
+      <%= f.text_area :category_details, placeholder: 'Input Category Details', value:@category.category_details, class:"textArea", :maxlength => 50 %>
 
       <%= f.hidden_field :user_id, value: @id %>
       <%= f.hidden_field :id, value:@category.id %>

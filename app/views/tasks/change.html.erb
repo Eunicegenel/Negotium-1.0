@@ -1,41 +1,47 @@
- <%= form_with scope: :task, method: :put, url: tasks_update_path(@task.id), local: true do |f| %>
-  <% if @task.errors.any? %>
-    <ul>
-    <% @task.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
+<head>
+  <link rel="stylesheet" type="text/css" href="form.css"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
+</head> 
+<body>
+  <%= link_to '/authorized', method: :get do %>
+    <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
 
-  <div class="update_form" id="updateForm">
-      <div class="update_details">
-        <%= f.hidden_field :id, value:@task.id %>
+  <%= form_with scope: :task, method: :put, url: tasks_update_path(@task.id), local: true do |f| %>
+    <div class="form_layout_task update_layout_task">
+      <h3 class="form_title_task">Update Task</h3>
+      <div>
+        <% if @task.errors.any? %>
+          <ul>
+          <% @task.errors.full_messages.each do |message| %>
+            <li class="errors"><%= message %></li>
+          <% end %>
+          </ul>
+        <% end %>
       </div>
-
-    <div class="update_details">
-      <%= f.label :"Task Name" , class:"textLabel" %>
-      <%= f.text_field :task_name, value:@task.task_name, class:"textUpdate" %>
-    </div>
-
-    <div class="update_details">
-      <%= f.label :"Task Details" , class:"textLabel" %>
-      <%= f.text_field :task_details, value:@task.task_details, class:"textUpdate" %>
-    </div>
-
-    <div class="update_details">
-      <%= f.label :"Due Date" , class:"textLabel" %>
-      <%= f.date_field :due_date, value:@task.due_date, class:"textUpdate" %>
-    </div>
-
-    <div>
-      <%= f.hidden_field :category_id, value: @task.category_id %>
-      <%= f.hidden_field :complete, value: @task.complete %>
-    </div>
-
-    <div>
-      <%= hidden_field_tag(:task_id, @task.id) %>
-      <%= f.submit :"UPDATE TASK", :class => "submit_update" %>
-    </div>
     
-  </div>
-<% end %>
+      <%= f.label :task_name, "Name", class:"textLabel_task" %>
+      <p class="textTips_task">* Maximum of 15 characters</p>
+      <%= f.text_field :task_name, class:"textField_task", placeholder: 'Input Task Name', value:@task.task_name, :maxlength => 15 %>
+
+      <%= f.label :due_date, "Due Date", class:"textLabel_task" %>
+      <%= f.date_field :due_date, class:"textField_task", value:@task.due_date, :maxlength => 15 %>
+
+      <%= f.label :task_details, "Details", class:"textLabel_task" %>
+      <p class="textTips_task">* Press enter to add new line</p>
+      <p class="textTips_task">* Maximum of 500 characters</p>
+      <%= f.text_area :task_details, class:"textArea_task", placeholder: 'Input Task Details', value:@task.task_details, :maxlength => 500 %>
+
+      <%= f.hidden_field :id, value:@task.id %>
+      <%= f.hidden_field :complete, value: 0 %>
+      <%= hidden_field_tag(:task_id, @task.id) %>
+      <%= hidden_field_tag(:category_id, @category_id) %>
+
+      <%= f.submit "UPDATE TASK", :class => "savebtn_task" %>
+    </div>
+  <% end %>
+    
+  <%= image_tag("update_task.png", :class => "update_task layer", :pos => -1) %>
+  <%= javascript_pack_tag 'form.js' %>
+</body>

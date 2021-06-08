@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     user = User.find_by_id(session[:user_id])
     @category = user.categories.new(category_params)
     if @category.save 
-      redirect_to categories_new_path
+      redirect_to '/authorized'
     else
       flash[:alert] = "* Category name not set"
       redirect_to '/categories' 

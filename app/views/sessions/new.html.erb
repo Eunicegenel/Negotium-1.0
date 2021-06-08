@@ -1,20 +1,35 @@
-<h1>Login</h1>
-
-<%= form_tag '/login' do %>
-  <% if !!flash[:alert] %>
-    <p><%= flash[:alert] %></p> <br>
+<head>
+  <link rel="stylesheet" type="text/css" href="form.css"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <%= link_to '/welcome', method: :get do %>
+    <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
 
-  <div>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
-  </div>
+  <%= form_tag '/login' do %>
+    <div class="form_layout_user add_layout_login">
+      <h3 class="form_title">Welcome Back!</h3>
+      <% if !!flash[:alert] %>
+        <p class="errors"><%= flash[:alert] %></p> <br>
+      <% end %>
 
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
+      <%= label_tag :username, "Username", class:"textLabel" %>
+      <%= text_field_tag :username, "", class:"textField_user", placeholder: 'Input Username' %>
 
-  <%= submit_tag "Login" %>
+      <%= label :password, "Password", class:"textLabel" %>
+      <%= text_field_tag :password, "", class:"textField_user", placeholder: 'Input Password'  %>
 
-<% end %>
+      <div class="actions">
+        <%= submit_tag "LOGIN", :class => "login_new" %>
+        <%= link_to '/users/new', method: :get do %>
+          <p class="signup">SIGN UP</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= image_tag("login.png", :class => "login_img layer", :pos => -1) %>
+  <%= javascript_pack_tag 'form.js' %>
+</body>

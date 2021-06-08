@@ -5,7 +5,7 @@
 </head>
 <body>
   <%= form_with scope: :category, url: categories_create_path, local: true do |f| %>
-    <div class="form_layout">
+    <div class="form_layout add_layout_cat">
       <h3 class="form_title">New Category</h3>
       <div>
         <% if !!flash[:alert] %>
@@ -15,12 +15,12 @@
       
       <%= f.label :category_name, "Name", class:"textLabel" %>
       <p class="textTips">* Maximum of 15 characters</p>
-      <%= f.text_field :category_name, class:"textField", :maxlength => 15 %>
+      <%= f.text_field :category_name, class:"textField", placeholder: 'Input Category Name', :maxlength => 15 %>
 
       <%= f.label :category_details, "Details", class:"textLabel" %>
       <p class="textTips">* Press enter to add new line</p>
       <p class="textTips">* Maximum of 50 characters</p>
-      <%= f.text_area :category_details, class:"textArea", :maxlength => 50 %>
+      <%= f.text_area :category_details, class:"textArea", placeholder: 'Input Category Details', :maxlength => 50 %>
 
       <%= f.hidden_field :user_id, value: @id %>
 
