@@ -8,12 +8,8 @@
     <div class="form_layout">
       <h3 class="form_title">New Category</h3>
       <div>
-        <% if @category.errors.any? %>
-          <ul>
-          <% @category.errors.full_messages.each do |message| %>
-            <li class="errors"><%= message %></li>
-          <% end %>
-          </ul>
+        <% if !!flash[:alert] %>
+          <p class="errors"><%= flash[:alert] %></p>
         <% end %>
       </div>
       
@@ -36,7 +32,7 @@
     <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
 
-  <div class="category_layout">
+  <div class="category_layout add_list_cat">
     <p class="cat_title">Category List</p>
     <div class="cat_scroll">
       <% if @count != 0 %>

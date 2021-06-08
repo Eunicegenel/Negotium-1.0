@@ -13,8 +13,8 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should be able to create task' do
-    post tasks_create_path, params: { task: {task_name:"Buy Milk",task_details:"Choco Milk = $12",due_date:"29-05-2010",complete:0} }
-    assert_response :success
+    post tasks_create_path, params: { category_id: @category.id, task: {task_name:"Buy Milk",task_details:"Choco Milk = $12",due_date:"29-05-2010",complete:0} }
+    assert_response :redirect
   end
 
   test 'get change task page' do

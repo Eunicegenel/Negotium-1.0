@@ -112,8 +112,6 @@ body {
 
 .category_layout {
   position: fixed;
-  top: 10vh;
-  left: 73vw;
   background-color: #ad3725;
   display: flex;
   flex-direction: column;
@@ -121,7 +119,7 @@ body {
   align-items: center;
   width: 13rem;
   height: auto;
-  max-height: 10rem;
+  max-height: 12rem;
   padding: 1rem;
   box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
   -moz-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
@@ -141,7 +139,7 @@ body {
 .cat_scroll {
   width: 95%;
   height: auto;
-  max-height: 6.5rem;
+  max-height: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -167,6 +165,22 @@ body {
   width: 10rem;
 }
 
+.update_layout_cat {
+  position: fixed;
+  top: 12vh;
+  left: 3vw;
+}
+
+.add_list_cat {
+  top: 10vh;
+  left: 73vw;
+}
+
+.update_list_cat {
+  top: 57vh;
+  left: 35vw;
+}
+
 .organize_cat {
   position: fixed;
   z-index: -5;
@@ -180,5 +194,21 @@ body {
   z-index: -5;
   left: 67vw;
   top: 40vh;
+  width: 25rem;
+}
+
+.update_post {
+  position: fixed;
+  z-index: -5;
+  left: 55vw;
+  top: 15vh;
+  width: 35rem;
+}
+
+.filing {
+  position: fixed;
+  z-index: -5;
+  left: 30vw;
+  top: -5vh;
   width: 25rem;
 }

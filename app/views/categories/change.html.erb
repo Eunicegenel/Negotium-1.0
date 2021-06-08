@@ -4,16 +4,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
+  <%= link_to '/authorized', method: :get do %>
+    <%= image_tag("pentasks.png", :class => "logo_cat") %>
+  <% end %>
   <%= form_with scope: :category, method: :put, url: categories_update_path(@category.id), local: true do |f| %>
-    <div class="form_layout">
+    <div class="form_layout update_layout_cat">
       <h3 class="form_title">Update Category</h3>
       <div>
-        <% if @category.errors.any? %>
-          <ul>
-          <% @category.errors.full_messages.each do |message| %>
-            <li class="errors"><%= message %></li>
-          <% end %>
-          </ul>
+        <% if !!flash[:alert] %>
+          <p class="errors"><%= flash[:alert] %></p>
         <% end %>
       </div>
         
@@ -34,8 +33,20 @@
     </div>
   <% end %>
 
-  <%= link_to '/authorized', method: :get do %>
-    <%= image_tag("pentasks.png", :class => "logo_cat") %>
-  <% end %>
+  <div class="category_layout update_list_cat">
+    <p class="cat_title">Category List</p>
+    <div class="cat_scroll">
+      <% if @count != 0 %>
+        <% @list.each do |l| %>
+          <p class="list_text"> <%= l.category_name %> </p>
+        <% end %>
+      <% else %>
+        <p class="list_text"> No categories made </p>
+      <% end %>
+    </div>
+  </div>
+
+  <%= image_tag("update_post.png", :class => "update_post layer", :pos => 1) %>
+  <%= image_tag("filing.png", :class => "filing layer", :pos => -1) %>
   <%= javascript_pack_tag 'form.js' %>
 </body>

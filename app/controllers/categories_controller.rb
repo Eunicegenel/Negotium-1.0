@@ -3,17 +3,18 @@ class CategoriesController < ApplicationController
 
   def new
     @id = session[:user_id]
-    user = User.find_by_id(@id)
     if @id == nil
       redirect_to '/authorized'
     else
-      @list = user.categories.sort_by {|obj| obj.category_name}
+      @list = Category.where(user_id:@id).sort_by {|obj| obj.category_name}
       @count = @list.count
       @category = Category.new
     end
   end
 
   def change
+    @list = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.category_name}
+    @count = @list.count
     @category_id = params[:id]
     @category = Category.find_by(id: @category_id)
   end
@@ -22,9 +23,10 @@ class CategoriesController < ApplicationController
     user = User.find_by_id(session[:user_id])
     @category = user.categories.new(category_params)
     if @category.save 
-      redirect_to '/authorized'
+      redirect_to categories_new_path
     else
-      render :new 
+      flash[:alert] = "* Category name not set"
+      redirect_to '/categories' 
     end 
   end
 
@@ -33,7 +35,8 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to '/authorized'
     else
-      render '/categories/change'
+      flash[:alert] = "* Category name not set"
+      redirect_to categories_change_path(@category.id)
     end
   end
 
