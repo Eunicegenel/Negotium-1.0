@@ -46,9 +46,9 @@ body {
   padding: 0.5rem;
   font-family: "Questrial";
   font-size: 1rem;
-  border-color: #e3ddc5;
+  border-color: #ead8c2;
   color: #543f3f;
-  background-color: #e3ddc5;
+  background-color: #ead8c2;
 }
 
 .textArea {
@@ -60,10 +60,11 @@ body {
   padding: 0.5rem;
   font-family: "Questrial";
   font-size: 1rem;
-  border-color: #e3ddc5;
+  border-color: #ead8c2;
   color: #543f3f;
-  background-color: #e3ddc5;
+  background-color: #ead8c2;
   line-height: 1.5rem;
+  scrollbar-width: thin;
 }
 
 .textLabel {
@@ -86,16 +87,17 @@ body {
   border-radius: 0.625rem;
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #d59d5d;
-  border-color: #d59d5d;
+  background-color: #eb8b1e;
+  border-color: #eb8b1e;
   font-family: "Questrial";
   font-size: 1rem;
-  color: #543f3f;
+  color: #e3ddc5;
   transition: 0.5s ease;
   font-weight: bold;
 }
 
 .savebtn:hover {
+  color: #543f3f;
   background-color: #eec863;
   border-color: #eec863;
   transform: scale(1.1);
@@ -106,4 +108,46 @@ body {
   color: #e3ddc5;
   font-family: "Questrial";
   font-size: 0.8rem;
+}
+
+.category_layout {
+  position: fixed;
+  top: 3vh;
+  left: 0vw;
+  background-color: #ad3725;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  padding: 1rem;
+  box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
+  -o-box-shadow: -5px 5px 5px  rgba(0,0,0,0.6);
+  border-radius: 25px;
+}
+
+.logo_cat {
+  cursor: pointer;
+  position: fixed;
+  top: 2vh;
+  left: 1vw;
+  width: 10rem;
+}
+
+.organize_cat {
+  position: fixed;
+  z-index: -5;
+  left: 61vw;
+  top: 5vh;
+  width: 35rem;
+}
+
+.board_cat {
+  position: fixed;
+  z-index: -5;
+  left: 3vw;
+  top: 40vh;
+  width: 25rem;
 }

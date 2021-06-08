@@ -17,11 +17,11 @@
         <% end %>
       </div>
       
-      <%= f.label :category_name, "Category Name", class:"textLabel" %>
+      <%= f.label :category_name, "Name", class:"textLabel" %>
       <p class="textTips">* Maximum of 15 characters</p>
       <%= f.text_field :category_name, class:"textField", :maxlength => 15 %>
 
-      <%= f.label :category_details, "Category Details", class:"textLabel" %>
+      <%= f.label :category_details, "Details", class:"textLabel" %>
       <p class="textTips">* Press enter to add new line</p>
       <p class="textTips">* Maximum of 50 characters</p>
       <%= f.text_area :category_details, class:"textArea", :maxlength => 50 %>
@@ -31,5 +31,15 @@
       <%= f.submit "SAVE CATEGORY", :class => "savebtn" %>
     </div>
   <% end %>
+
+  <%= link_to '/authorized', method: :get do %>
+    <%= image_tag("pentasks.png", :class => "logo_cat") %>
+  <% end %>
+
+  
+  
+  <%= image_tag("board.png", :class => "board_cat layer", :pos => -1) %>
+  <%= image_tag("organize.png", :class => "organize_cat layer", :pos => 1) %>
+  <%= javascript_pack_tag 'form.js' %>
 </body>
 

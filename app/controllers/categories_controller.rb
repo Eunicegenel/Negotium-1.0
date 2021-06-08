@@ -3,9 +3,11 @@ class CategoriesController < ApplicationController
 
   def new
     @id = session[:user_id]
+    user = User.find_by_id(@id)
     if @id == nil
       redirect_to '/authorized'
     else
+      @list = user.categories.sort_by {|obj| obj.category_name}
       @category = Category.new
     end
   end
