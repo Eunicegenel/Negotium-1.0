@@ -23,10 +23,15 @@ body {
   background-image: linear-gradient(to bottom, #1b1515, #3d2d2b, #624842, #886657, #ae866c);
 }
 
+.logo {
+  width: 60%;
+  margin: 1rem;
+}
+
 .profile {
-  margin-top: 1rem;
   font-family: "Dancing Script";
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: #e3ddc5;
 }
 
@@ -175,7 +180,7 @@ body {
   overflow-y: scroll;
   overflow-x: scroll;
   width: 12rem;
-  height: 22rem;
+  height: 13rem;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }

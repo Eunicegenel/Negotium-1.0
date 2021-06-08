@@ -24,7 +24,8 @@ class TasksController < ApplicationController
 
   def create
     @category_id = params[:category_id]
-    @task = Task.new(task_params)
+    @chosen_category = Category.find_by_id(@category_id)
+    @task = @chosen_category.tasks.new(task_params)
     @id = session[:user_id]
     if @task.save 
       @category = Category.find_by_id(@category_id).category_name

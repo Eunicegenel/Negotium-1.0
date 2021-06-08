@@ -6,6 +6,8 @@
 <body>
   <%= image_tag("computer.png", :class => "bgif layer", :pos => 1) %>
   <div class="sidebar">
+    <%= image_tag("logolight.png", :class => "logo") %>
+
     <h1 class="profile">Hello <%= current_user.username %> !</h1>
     <!-- <%= link_to "Logout", '/logout', class:"logout", method: :get %>
     <%= link_to "New Category", '/categories', class:"new_category", method: :get %> -->
@@ -126,7 +128,7 @@
                 <h5 class="date"><%= t.due_date.to_date %></h5>
                 
                 <div class="task_actions">
-                  <%= form_with scope: :task, method: :put, url: tasks_finish_path, local: true do |f| %>
+                  <%= form_with scope: :task, method: :put, url: tasks_finish_path(t.id), local: true do |f| %>
                     <div class="update_complete" id="updateComplete">                                          
                       <%= hidden_field_tag(:task_id, t.id) %>
                       <%= f.submit "finish", :class => "finish_icon", :title => "Complete Task", :type => :image, :src => "https://img.icons8.com/dusk/50/000000/checked-checkbox.png" %>
@@ -137,7 +139,7 @@
                     <img title="Update Task" class="update_icon" src="https://img.icons8.com/dusk/64/000000/approve-and-update.png"/>
                   <% end %>
 
-                  <%= form_with scope: :task, method: :delete, url: tasks_delete_path, local: true do |f| %>
+                  <%= form_with scope: :task, method: :delete, url: tasks_delete_path(t.id), local: true do |f| %>
                     <%= hidden_field_tag(:task_id, t.id) %>
                     <%= f.submit "delete", :class => "delete_icon", :title => "Delete Task", :type => :image, :src => "https://img.icons8.com/dusk/64/000000/delete-sign.png" %>
                   <% end %>
