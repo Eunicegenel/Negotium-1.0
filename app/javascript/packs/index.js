@@ -14,7 +14,6 @@ document.addEventListener('mousemove', function(e){
 document.getElementById("notif").addEventListener("click", function() {
   if (document.getElementById("notif").value === "0"){
     document.getElementById("urgent_area").style.opacity = "1";
-    document.getElementById("notif").src = "/assets/bell_1.png";
     document.getElementById("notif").title = "Show All Tasks";
     document.getElementById("notif").value = "1";
     document.getElementById("urgent_area").style.height = "85vh";
@@ -23,7 +22,6 @@ document.getElementById("notif").addEventListener("click", function() {
     document.getElementById("completed_area").style.opacity = "0";
   } else {
     document.getElementById("urgent_area").style.opacity = "1";
-    document.getElementById("notif").src = "/assets/bell.png";
     document.getElementById("notif").title = "Show Urgent Tasks";
     document.getElementById("notif").value = "0";
     document.getElementById("urgent_area").style.height = "38vh";
