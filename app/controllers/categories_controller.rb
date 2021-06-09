@@ -32,7 +32,10 @@ class CategoriesController < ApplicationController
 
   def update  
     @category = Category.find_by_id(params[:id])
+    tasks = Task.where(category_id:@category.id)
     if @category.update(category_params)
+      new_name = @category.category_name
+      tasks.update_all(category_name:new_name)
       redirect_to '/authorized'
     else
       flash[:alert] = "* Category name not set"

@@ -27,7 +27,7 @@
       <% end %>
     </div>
 
-  <%= link_to "Show All Tasks", authorized_path(:category_id => nil), :class => "all" %>
+  <%= link_to "Active Tasks", authorized_path(:category_id => nil), :class => "all" %>
     
     <div class="side_scroll">
       <% @category.each do |c| %>
