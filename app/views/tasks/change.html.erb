@@ -23,7 +23,7 @@
     
       <%= f.label :task_name, "Name", class:"textLabel_task" %>
       <p class="textTips_task">* Maximum of 12 characters</p>
-      <%= f.text_field :task_name, class:"textField_task", placeholder: 'Input Task Name', value:@task.task_name, :maxlength => 15 %>
+      <%= f.text_field :task_name, class:"textField_task", placeholder: 'Input Task Name', value:@task.task_name, :maxlength => 12 %>
 
       <%= f.label :due_date, "Due Date", class:"textLabel_task" %>
       <%= f.date_field :due_date, class:"textField_task", value:@task.due_date, :maxlength => 15 %>
