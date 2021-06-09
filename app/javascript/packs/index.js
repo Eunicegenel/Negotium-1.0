@@ -20,6 +20,7 @@ document.getElementById("notif").addEventListener("click", function() {
     document.getElementById("upcoming_area").style.opacity = "0";
     document.getElementById("check").value = "0";
     document.getElementById("completed_area").style.opacity = "0";
+    document.getElementById("completed_area").style.zIndex = "-5";
   } else {
     document.getElementById("urgent_area").style.opacity = "1";
     document.getElementById("notif").title = "Show Urgent Tasks";
@@ -28,6 +29,7 @@ document.getElementById("notif").addEventListener("click", function() {
     document.getElementById("upcoming_area").style.opacity = "1";
     document.getElementById("check").value = "0";
     document.getElementById("completed_area").style.opacity = "0";
+    document.getElementById("completed_area").style.zIndex = "-5";
   }
 });
 
@@ -37,8 +39,10 @@ document.getElementById("check").addEventListener("click", function() {
     document.getElementById("urgent_area").style.opacity = "0";
     document.getElementById("upcoming_area").style.opacity = "0";
     document.getElementById("completed_area").style.opacity = "1";
+    document.getElementById("completed_area").style.zIndex = "5";
   } else {
     document.getElementById("check").value = "0";
+    document.getElementById("completed_area").style.zIndex = "-5";
     document.getElementById("completed_area").style.opacity = "0";
     document.getElementById("urgent_area").style.opacity = "1";
     if (document.getElementById("notif").value === "1"){

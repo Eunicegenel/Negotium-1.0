@@ -357,6 +357,7 @@ body {
   opacity: 0;
   height: 85vh;
   display: flex;
+  z-index: -5;
 }
 
 .upcoming_txt, .urgent_txt, .completed_txt {
