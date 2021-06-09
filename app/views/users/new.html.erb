@@ -7,7 +7,7 @@
   <%= link_to root_path, method: :get do %>
     <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
-\
+
   <%= form_for @user do |f| %>
     <div class="form_layout_user add_layout_user">
       <h3 class="form_title_user">Create an Account</h3>
@@ -27,11 +27,11 @@
       <%= f.text_field :username, class:"textField_user", placeholder: 'Input Username', :maxlength => 15 %>
 
       <%= f.label :password, "Password", class:"textLabel_user" %>
-      <%= f.text_field :password, class:"textField_user", placeholder: 'Input Password' %>
+      <%= f.password_field :password, class:"textField_user", placeholder: 'Input Password' %>
 
       <%= f.submit "SIGN UP", :class => "signup" %>
 
-      <%= link_to '/login', method: :get do %>
+      <%= link_to "/login", method: :get do %>
         <p class="link_txt_log">Already have an account? <span class="link_login">Login</span></p>  
       <% end %>
     </div>

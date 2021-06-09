@@ -131,6 +131,7 @@ body {
 }
 
 .delete_icon {
+  cursor: pointer;
   background-repeat: none;
   width: 1.5rem;
   transition: ease 0.3s;
@@ -152,17 +153,13 @@ body {
   transform: rotate(180deg);
 }
 
-.bell_icon, .info_icon {
+.bell_icon, .check_icon {
   cursor: pointer;
   width: 2.25rem;
   height: 2.25rem;
   transition: ease 0.3s;
   border-radius: 50%;
   margin: 0.5rem;
-}
-
-.bell_icon:hover, .info_icon:hover {
-  transform: rotate(360deg);
 }
 
 .sidebar_actions {
@@ -335,12 +332,34 @@ body {
   transition: 0.5s ease;
 }
 
+.completed {
+  position: fixed;
+  top: 5vh;
+  left: 20vw;
+  width: 58vw;
+  background-color: rgba(29, 26, 26, 0.9);
+  padding: 2vh;
+  flex-direction: column;
+  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+  border-radius: 25px;
+  transition: 0.5s ease;
+}
+
 #urgent_area, #upcoming_area {
   height: 38vh;
   display: flex;
 }
 
-.upcoming_txt, .urgent_txt {
+#completed_area {
+  opacity: 0;
+  height: 85vh;
+  display: flex;
+}
+
+.upcoming_txt, .urgent_txt, .completed_txt {
   margin-left: 1rem;
   margin-bottom: 0.75rem;
   color: #e3ddc5;

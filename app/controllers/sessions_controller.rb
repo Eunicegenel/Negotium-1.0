@@ -22,18 +22,24 @@ class SessionsController < ApplicationController
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
       catids = @category.pluck(:id)
       task = Task.where(category_id: catids,complete: 0)
+      done_task = Task.where(category_id: catids,complete: 1)
       @urgent_task = task.where("due_date <= ?", Date.today).sort_by {|obj| obj.due_date}
       @urgent_task_count = task.where("due_date <= ?", Date.today).count
       @upcoming_task = task.where("due_date > ?", Date.today).sort_by {|obj| obj.due_date}
       @upcoming_task_count = task.where("due_date > ?", Date.today).count
+      @completed_task = done_task.where(complete:1).sort_by {|obj| obj.updated_at}.reverse
+      @completed_task_count = done_task.where(complete:1).count
     else
       @category = Category.where(user_id: session[:user_id]).sort_by {|obj| obj.updated_at}.reverse
       @chosen_category = Category.find_by_id(@category_id)
       task = Task.where(category_id: @category_id,complete: 0)
+      done_task = Task.where(category_id: @category_id,complete: 1)
       @urgent_task = task.where("due_date <= ?", Date.today).sort_by {|obj| obj.due_date}
       @urgent_task_count = task.where("due_date <= ?", Date.today).count
       @upcoming_task = task.where("due_date > ?", Date.today).sort_by {|obj| obj.due_date}
       @upcoming_task_count = task.where("due_date > ?", Date.today).count
+      @completed_task = done_task.where(complete:1).sort_by {|obj| obj.updated_at}.reverse
+      @completed_task_count = done_task.where(complete:1).count
 
       if @task_id != nil
         @chosen_task = Task.find_by_id(@task_id)
