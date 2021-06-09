@@ -381,7 +381,7 @@ body {
 #show {
   opacity: 0;
   display: flex;
-  background-color: rgba(47,72,88,0.95);
+  background-color: #d59d5df8;
   height: auto;
   max-height: 83.5vh;
   width: 13vw;
@@ -406,7 +406,7 @@ body {
 
 .cat_name, .tas_name {
   margin: 1rem;
-  color: #e3ddc5;
+  color: #543f3f;
   font-family: "Questrial";
   font-size: 1.25rem;
   font-weight: bold;
@@ -414,7 +414,7 @@ body {
 }
 
 .cat_detes, .tas_detes {
-  color: #e3ddc5;
+  color: #543f3f;
   font-family: "Questrial";
   font-size: 1rem;
   margin-top: 1rem;
@@ -422,17 +422,23 @@ body {
   font-weight: bold;
 }
 
+.tas_detes {
+  width: 100%;
+  height: 20rem;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: none;
+  border: none;
+  outline: none;
+  line-height: 1.5rem;
+}
+
 .tas_date {
-  color: #e3ddc5;
+  color: #543f3f;
   font-family: "Questrial";
   font-size: 1rem;
   margin: 0.5rem;
   text-align: center;
-}
-
-.tas_scroll {
-  scrollbar-width: thin;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 

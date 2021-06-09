@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+.logo_cat {
+  cursor: pointer;
+  position: fixed;
+  top: 2vh;
+  left: 1vw;
+  width: 10rem;
+}
+
+.logo_pos {
+  position: fixed;
+  top: 3vh;
+  left: 2vw;
+  width: 7rem;
+}
+
+.text_pos_title {
+  position: fixed;
+  top: 25vh;
+  left: 5vw;
+  width: 15rem;
+}
+
+.title_text {
+  font-family: "Indie Flower";
+  font-size: 3rem;
+  width: 35rem;
+  font-weight: bold;
+  text-align: right;
+  color: #458083;
+}
+
+.title_pic {
+  position: fixed;
+  top: -17vh;
+  left: 40vw;
+  width: 55rem;
+}
+
+.signup_link {
+  z-index: 5;
+  cursor: pointer;
+  position: fixed;
+  top: 65vh;
+  left: 28vw;
+  width: 11rem;
+  font-family: "Raleway";
+  font-weight: bold;
+  color: #e3ddc5;
+  font-size: 1rem;
+  background-color: #543f3f;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  border-radius: 0.625rem;
+  transition: 0.5s ease;
+  box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -moz-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: -5px 5px 3px  rgba(0,0,0,0.6);
+  -o-box-shadow: -5px 1px 5px  rgba(0,0,0,0.6);
+}
+
+.signup_link:hover {
+  transform: scale(1.2);
+}
+
+.login_pos {
+  z-index: 5;
+  position: fixed;
+  top: 78vh;
+  left: 24vw;
+  font-size: 1.25rem;
+  font-family: "Questrial";
+  font-weight: 500;
+  color: #ff7141;
+  transition: 0.5s ease;
+}
+
+.login_pos:hover {
+  color: #db4412;
+}

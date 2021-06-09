@@ -1,39 +1,39 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="form.css"> 
+  <%= stylesheet_link_tag "form" %>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
-  <%= link_to '/welcome', method: :get do %>
+  <%= link_to root_path, method: :get do %>
     <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
-
+\
   <%= form_for @user do |f| %>
     <div class="form_layout_user add_layout_user">
-      <h3 class="form_title">Create an Account</h3>
+      <h3 class="form_title_user">Create an Account</h3>
       <% if @user.errors.any? %>
         <ul>
         <% @user.errors.full_messages.each do |message| %>
-          <li class="errors"><%= message %></li>
+          <li class="errors_user"><%= message %></li>
         <% end %>
         </ul>
       <% end %>
       
-      <%= f.label :email, "Email", class:"textLabel" %>
+      <%= f.label :email, "Email", class:"textLabel_user" %>
       <%= f.email_field  :email, class:"textField_user", placeholder: 'Input Email' %>
 
-      <%= f.label :username, "Username", class:"textLabel" %>
-      <%= f.text_field :username, class:"textField_user", placeholder: 'Input Username' %>
+      <%= f.label :username, "Username", class:"textLabel_user" %>
+      <p class="textTips_user">* Maximum of 15 characters</p>
+      <%= f.text_field :username, class:"textField_user", placeholder: 'Input Username', :maxlength => 15 %>
 
-      <%= f.label :password, "Password", class:"textLabel" %>
+      <%= f.label :password, "Password", class:"textLabel_user" %>
       <%= f.text_field :password, class:"textField_user", placeholder: 'Input Password' %>
 
-      <div class="actions">
-        <%= f.submit "SIGN UP", :class => "signup" %>
-        <%= link_to '/login', method: :get do %>
-          <p class="login">LOGIN</p>
-        <% end %>
-      </div>
+      <%= f.submit "SIGN UP", :class => "signup" %>
+
+      <%= link_to '/login', method: :get do %>
+        <p class="link_txt_log">Already have an account? <span class="link_login">Login</span></p>  
+      <% end %>
     </div>
   <% end %>
 

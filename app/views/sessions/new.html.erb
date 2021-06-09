@@ -1,32 +1,31 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="form.css"> 
+  <%= stylesheet_link_tag "form" %>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
-  <%= link_to '/welcome', method: :get do %>
+  <%= link_to root_path, method: :get do %>
     <%= image_tag("pentasks.png", :class => "logo_cat") %>
   <% end %>
 
   <%= form_tag '/login' do %>
     <div class="form_layout_user add_layout_login">
-      <h3 class="form_title">Welcome Back!</h3>
+      <h3 class="form_title_user">Welcome Back!</h3>
       <% if !!flash[:alert] %>
-        <p class="errors"><%= flash[:alert] %></p> <br>
+        <p class="errors_user"><%= flash[:alert] %></p> <br>
       <% end %>
 
-      <%= label_tag :username, "Username", class:"textLabel" %>
+      <%= label_tag :username, "Username", class:"textLabel_user" %>
       <%= text_field_tag :username, "", class:"textField_user", placeholder: 'Input Username' %>
 
-      <%= label :password, "Password", class:"textLabel" %>
+      <%= label :password, "Password", class:"textLabel_user" %>
       <%= text_field_tag :password, "", class:"textField_user", placeholder: 'Input Password'  %>
 
-      <div class="actions">
-        <%= submit_tag "LOGIN", :class => "login_new" %>
-        <%= link_to '/users/new', method: :get do %>
-          <p class="signup">SIGN UP</p>
-        <% end %>
-      </div>
+      <%= submit_tag "LOGIN", :class => "login" %>
+
+      <%= link_to '/users/new', method: :get do %>
+        <p class="link_txt_sign">Don't have an account? <span class="link_sign_up">Sign Up</span></p>
+      <% end %>
     </div>
   <% end %>
 

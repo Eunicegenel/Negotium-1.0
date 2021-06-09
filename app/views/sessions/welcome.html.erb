@@ -1,9 +1,33 @@
-<h1>Welcome</h1>
+<head>
+  <%= stylesheet_link_tag "root" %>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <!-- <%= link_to '/welcome', method: :get do %>
+    <%= image_tag("pentasks.png", :class => "logo_cat") %>
+  <% end %>
+  <div class="mainarea">
+    <%= button_to "Login", '/login', method: :get %>
+  </div>
 
-<% if logged_in? %>
-  <h1>Hello, <%= current_user.username %></h1>
-<% else %>
-  <%= button_to "Login", '/login', method: :get %>
-  <%= button_to "Sign Up", '/users/new', method: :get %>
-<% end %>
+   -->
+   
+  <p class="title_text text_pos_title">
+    Be on top of every task with Pen Tasks
+  </p>
+
+  <%= link_to '/users/new' do %>
+    <p class="signup_link">TRY PEN TASKS NOW</p>
+  <% end %>
+
+  <%= link_to '/login', method: :get do %>
+    <p class="login_pos">Already have an account? <span class="link_login">Login</span></p>  
+  <% end %>
+
+  <%= image_tag("logodark.png", :class => "logo_pos") %>
+  <%= image_tag("notes.png", :class => "title_pic") %>
+  <%= javascript_pack_tag 'form.js' %>
+</body>
+
 

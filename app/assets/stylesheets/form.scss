@@ -96,19 +96,17 @@ body {
   border-radius: 0.625rem;
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #eb8b1e;
-  border-color: #eb8b1e;
+  background-color: #009ab1;
+  border-color: #009ab1;
   font-family: "Questrial";
   font-size: 1rem;
-  color: #402e32;
+  color: #ead8c2;
   transition: 0.5s ease;
   font-weight: bold;
+  width: 18rem;
 }
 
 .savebtn:hover {
-  color: #543f3f;
-  background-color: #eec863;
-  border-color: #eec863;
   transform: scale(1.1);
 }
 
@@ -283,19 +281,17 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: #eb8b1e;
-  border-color: #eb8b1e;
+  width: 18rem;
+  background-color: rgb(64,46,50);
+  border-color: rgb(64,46,50);
   font-family: "Questrial";
   font-size: 1rem;
-  color: #402e32;
+  color: #e3ddc5;
   transition: 0.5s ease;
   font-weight: bold;
 }
 
 .savebtn_task:hover {
-  color: #543f3f;
-  background-color: #eec863;
-  border-color: #eec863;
   transform: scale(1.1);
 }
 
@@ -306,74 +302,25 @@ body {
   padding: 0.5rem;
   font-family: "Questrial";
   font-size: 1rem;
-  color: #ead8c2;
+  color: #543f3f;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid #ead8c2;
+  border-bottom: 1px solid #543f3f;
+}
+
+.textLabel_user {
+  color: #543f3f;
+  font-family: "Indie Flower";
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: left;
 }
 
 .actions {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.login {
-  cursor: pointer;
-  border-radius: 0.625rem;
-  margin-left: 1rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #e86a52;
-  border-color: #e86a52;
-  font-family: "Questrial";
-  font-size: 1rem;
-  color: #ead8c2;
-  transition: 0.5s ease;
-  font-weight: bold;
-}
-
-.login_new {
-  cursor: pointer;
-  border-radius: 0.625rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #e86a52;
-  border-color: #e86a52;
-  font-family: "Questrial";
-  font-size: 1rem;
-  color: #ead8c2;
-  transition: 0.5s ease;
-  font-weight: bold;
-}
-
-.login:hover, .login_new:hover {
-  background-color: #d15b44;
-  border-color: #d15b44;
-  transform: scale(1.1);
-}
-
-.signup {
-  cursor: pointer;
-  border-radius: 0.625rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #76578c;
-  border-color: #76578c;
-  font-family: "Questrial";
-  font-size: 1rem;
-  color: #ead8c2;
-  transition: 0.5s ease;
-  font-weight: bold;
-}
-
-.signup:hover {
-  color: #ead8c2;
-  background-color: #614377;
-  border-color: #614377;
-  transform: scale(1.1);
 }
 
 .organize_cat {
@@ -427,7 +374,7 @@ body {
 .signup_img {
   position: fixed;
   z-index: -5;
-  left: 47vw;
+  left: 45vw;
   top: 0vh;
   width: 40rem;
 }
@@ -441,23 +388,27 @@ body {
 }
 
 .form_layout_user {
-  background-color: #84594f;
+  border: 0.25rem solid#543f3fb6;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 20vw;
   padding: 1.5rem;
-  box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
-  -moz-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
-  -webkit-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
-  -o-box-shadow: -7px 7px 7px  rgba(0,0,0,0.6);
+}
+
+.form_title_user {
+  margin-bottom: 1rem;
+  color: #543f3f;
+  font-family: "Dancing Script";
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .add_layout_user {
   position: fixed;
   justify-content: center;
   top: 10vh;
-  left: 25vw;
+  left: 20vw;
   border-radius: 25px;
 }
 
@@ -467,4 +418,94 @@ body {
   top: 20vh;
   left: 55vw;
   border-radius: 25px;
+}
+
+.errors_user {
+  margin-bottom: 1rem;
+  color: #543f3f;
+  font-family: "Questrial";
+  font-size: 0.8rem;
+}
+
+.login {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: #d59d5d;
+  border-color: #d59d5d;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #543f3f;
+  transition: 0.5s ease;
+  font-weight: bold;
+  width: 13rem;
+}
+
+.login:hover {
+  background-color: #eec863;
+  border-color: #eec863;
+  transform: scale(1.1);
+}
+
+.signup {
+  cursor: pointer;
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #746881;
+  border-color: #746881;
+  font-family: "Questrial";
+  font-size: 1rem;
+  color: #ead8c2;
+  transition: 0.5s ease;
+  font-weight: bold;
+}
+
+.signup:hover {
+  color: #ead8c2;
+  background-color: #614377;
+  border-color: #614377;
+  transform: scale(1.1);
+}
+
+.link_txt_log {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-family: "Questrial";
+  font-weight: 500;
+  color: #ff7141;
+  transition: 0.5s ease;
+}
+
+.link_txt_log:hover {
+  color: #db4412;
+}
+
+.link_login {
+  font-weight: bold;
+}
+
+.link_txt_sign {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-family: "Questrial";
+  font-weight: 500;
+  color: #746881;
+  transition: 0.5s ease;
+}
+
+.link_txt_sign:hover {
+  color: #5c4377;
+}
+
+.link_sign_up {
+  font-weight: bold;
+}
+
+.textTips_user {
+  margin-top: 0.5rem;
+  color: #543f3f;
+  font-family: "Questrial";
+  font-size: 0.8rem;
 }

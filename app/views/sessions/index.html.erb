@@ -1,7 +1,5 @@
-<% content_for(:html_title) { 'Pen Tasks' } %>
-
 <head>
-  <link rel="stylesheet" type="text/css" href="index.css"> 
+  <%= stylesheet_link_tag "index" %>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
 </head>
@@ -168,9 +166,7 @@
           <h4 class="tas_name"><%= @chosen_task.task_name %></h4>
           <h5 class="tas_date"><%= @chosen_task.due_date.strftime("%A") %></h5>
           <h5 class="tas_date"><%= @chosen_task.due_date.to_date %></h5>
-          <div class="tas_scroll">
-            <h4 class="tas_detes"><%= @chosen_task.task_details %></h4>
-          </div>
+          <textarea class="tas_detes" readonly><%= @chosen_task.task_details %></textarea>
         <% end %>
       </div>
     </div>
