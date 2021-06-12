@@ -18,9 +18,9 @@
         <%= image_tag("add.png", :class => "new_category", :title => "Add Category") %>
       <% end %>
 
-      <%= image_tag("bell.png", :class => "bell_icon", :id => "notif", :value => "0", :title => "Show Urgent Tasks") %>
+      <%= image_tag("bell.png", :class => "bell_icon", :id => "notif", :check => "0", :title => "Show Urgent Tasks") %>
       
-      <%= image_tag("check.png", :class => "check_icon", :id => "check", :value => "0", :title => "Show Completed Tasks") %>
+      <%= image_tag("check.png", :class => "check_icon", :id => "check", :check => "0", :start => "0", :title => "Show Completed Tasks") %>
       
       <%= link_to '/logout', method: :get do %>
         <%= image_tag("logout.png", :class => "logout_icon", :title => "Sign Out") %>

@@ -12,54 +12,51 @@ document.addEventListener('mousemove', function(e){
 });	
 
 document.getElementById("notif").addEventListener("click", function() {
-  if (document.getElementById("notif").value === "0"){
-    document.getElementById("urgent_area").style.opacity = "0";
+  if (document.getElementById("notif").getAttribute("check") === "0"){
+    document.getElementById("notif").setAttribute("check","1");
+    document.getElementById("check").setAttribute("start","1");
+    document.getElementById("urgent_area").style.opacity = "1";
+    document.getElementById("notif").title = "Show Upcoming Tasks";
+    document.getElementById("urgent_area").style.height = "85vh";
+    document.getElementById("upcoming_area").style.opacity = "0";
+  } else {
+    document.getElementById("notif").setAttribute("check","0");
+    document.getElementById("check").setAttribute("start","1");
     document.getElementById("notif").title = "Show Urgent Tasks";
-    document.getElementById("notif").value = "1";
+    document.getElementById("urgent_area").style.opacity = "0";
     document.getElementById("urgent_area").style.height = "0vh";
-
     document.getElementById("upcoming_area").style.opacity = "1";
     document.getElementById("upcoming_area").style.marginTop = "-7vh";
     document.getElementById("upcoming_area").style.height = "85vh";
-
-    document.getElementById("completed_area").style.opacity = "0";
-    document.getElementById("completed_area").style.zIndex = "-5";
-
-    document.getElementById("check").value = "0";
-  } else {
-    document.getElementById("urgent_area").style.opacity = "1";
-    document.getElementById("notif").title = "Show Upcoming Tasks";
-    
-    document.getElementById("urgent_area").style.height = "85vh";
-
-    document.getElementById("upcoming_area").style.opacity = "0";
-
-    document.getElementById("check").value = "0";
-    document.getElementById("completed_area").style.opacity = "0";
-    document.getElementById("completed_area").style.zIndex = "-5";
-
-    document.getElementById("notif").value = "0";
   }
 });
 
 document.getElementById("check").addEventListener("click", function() {
-  if (document.getElementById("check").value === "0"){
-    document.getElementById("check").value = "1";
+  if (document.getElementById("check").getAttribute("check") === "0"){
     document.getElementById("urgent_area").style.opacity = "0";
     document.getElementById("upcoming_area").style.opacity = "0";
     document.getElementById("completed_area").style.opacity = "1";
     document.getElementById("completed_area").style.zIndex = "5";
+    document.getElementById("check").setAttribute("check","1")
+    
   } else {
-    document.getElementById("check").value = "0";
-    document.getElementById("completed_area").style.zIndex = "-5";
-    document.getElementById("completed_area").style.opacity = "0";
-    document.getElementById("urgent_area").style.opacity = "1";
-    if (document.getElementById("notif").value === "1"){
-      document.getElementById("upcoming_area").style.opacity = "1";
-      document.getElementById("urgent_area").style.opacity = "0";
-    } else {
-      document.getElementById("upcoming_area").style.opacity = "0";
+    if (document.getElementById("check").getAttribute("start") === "0") {
+      document.getElementById("completed_area").style.zIndex = "-5";
+      document.getElementById("completed_area").style.opacity = "0";
       document.getElementById("urgent_area").style.opacity = "1";
+      document.getElementById("upcoming_area").style.opacity = "1";
+      document.getElementById("check").setAttribute("check","0")
+    } else {
+      document.getElementById("completed_area").style.zIndex = "-5";
+      document.getElementById("completed_area").style.opacity = "0";
+      if (document.getElementById("notif").getAttribute("check") === "1"){
+        document.getElementById("upcoming_area").style.opacity = "0";
+        document.getElementById("urgent_area").style.opacity = "1";
+      } else {
+        document.getElementById("upcoming_area").style.opacity = "1";
+        document.getElementById("urgent_area").style.opacity = "0";
+      }
+      document.getElementById("check").setAttribute("check","0")
     }
   } 
 });
