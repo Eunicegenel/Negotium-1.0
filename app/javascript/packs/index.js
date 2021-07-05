@@ -19,6 +19,8 @@ document.getElementById("notif").addEventListener("click", function() {
     document.getElementById("notif").title = "Show Upcoming Tasks";
     document.getElementById("urgent_area").style.height = "85vh";
     document.getElementById("upcoming_area").style.opacity = "0";
+    document.getElementById("completed_area").style.opacity = "0";
+    document.getElementById("completed_area").style.zIndex = "-5";
   } else {
     document.getElementById("notif").setAttribute("check","0");
     document.getElementById("check").setAttribute("start","1");
@@ -28,6 +30,8 @@ document.getElementById("notif").addEventListener("click", function() {
     document.getElementById("upcoming_area").style.opacity = "1";
     document.getElementById("upcoming_area").style.marginTop = "-7vh";
     document.getElementById("upcoming_area").style.height = "85vh";
+    document.getElementById("completed_area").style.opacity = "0";
+    document.getElementById("completed_area").style.zIndex = "-5";
   }
 });
 
